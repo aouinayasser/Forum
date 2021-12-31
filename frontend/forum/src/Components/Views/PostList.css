@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container #addPost {
+    margin-left: 81%;
+    margin-bottom: 30px;
+    position: relative;
+    right: 0px;
+}
+
+.forumContainer{
+    margin-top: 100px;
+    height: 75%;
+    border-radius: 20px;
+    border: transparent;
+    align-self: center;
+    
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 30px 30px 33px 30px;
+    
+}
