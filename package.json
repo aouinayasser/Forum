@@ -1,0 +1,23 @@
+{
+  "name": "projet_gmc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd backend && npx nodemon server.js\" \"cd frontend && cd forum && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aouinayasser/Forum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aouinayasser/Forum/issues"
+  },
+  "homepage": "https://github.com/aouinayasser/Forum#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

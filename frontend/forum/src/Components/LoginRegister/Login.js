@@ -1,5 +1,5 @@
 import './LoginRegister.css'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -55,10 +55,12 @@ export default function Login() {
                   </a>
                 </div>
                 <div className="text-center p-t-136">
+                  <Link to='/register'>
                   <a className="txt2" >
                     Créer un compte
                     <i className="fa fa-long-arrow-right m-l-5" aria-hidden="true" />
                   </a>
+                  </Link>
                 </div>
               </form>
             </div>

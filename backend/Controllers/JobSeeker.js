@@ -7,28 +7,28 @@ exports.signUpJobSeeker=async(req,res)=>{
     const {firstname,lastname,email,password,role}=req.body
     try {
         //check email exists
-        const jobSeeker=await JobSeeker.findOne({email})
-        if(jobSeeker){
+        const foundJobSeeker=await JobSeeker.findOne({email})
+        if(foundJobSeeker){
             return res.status(400).send({errors:[{msg:"Email already exists"}]})
         }
     
         //create new Job seeker
-        const newJobSeeker=new JobSeeker({
+        const jobSeeker=new JobSeeker({
             firstname,lastname,email,password,role
         })
         //Hash password
         const salt=10
         const hashpassword=await bcrypt.hash(password,salt)
-        newJobSeeker.password=hashpassword
+        jobSeeker.password=hashpassword
 
-        await newJobSeeker.save()
+        await jobSeeker.save()
 
         // Token
         const payload={
-            id:newJobSeeker._id
+            id:jobSeeker._id
         }
-        const token=jwt.sign(payload,process.env.secret,{ expiresIn: '30d' })
-        res.send(newJobSeeker,token)
+        const token=jwt.sign(payload,process.env.secret3,{ expiresIn: '30d' })
+        res.status(200).send({jobSeeker,token})
     } catch (error) {
         res.status(500).send(error.message)
     }
@@ -52,7 +52,7 @@ exports.singInJobseeker=async(req,res)=>{
         const payload={
             id:jobSeeker._id
         }
-        const token=jwt.sign(payload,process.env.secret,{ expiresIn: '30d' })
+        const token=jwt.sign(payload,process.env.secret3,{ expiresIn: '30d' })
         res.send({jobSeeker,token})
     } catch (error) {
         console.log(error)

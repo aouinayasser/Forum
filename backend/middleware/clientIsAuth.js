@@ -7,7 +7,7 @@ const clientIsAuth=(req,res,next)=>{
         return res.status(401).send({errors:[{msg:"You are not authorized"}]})
     }
     try {
-        const decoded = jwt.verify(token, process.env.secret)
+        const decoded = jwt.verify(token, process.env.secret2)
         req.client=decoded
         next()
     } catch (error) {

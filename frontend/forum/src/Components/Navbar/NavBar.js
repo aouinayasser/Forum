@@ -7,6 +7,7 @@ import {
   Button,
 } from "react-bootstrap";
 import "./NavBar.css";
+import {Link} from 'react-router-dom'
 
 export default function NavBar() {
   return (
@@ -14,7 +15,8 @@ export default function NavBar() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link as={Link} to='/'>Home</Nav.Link>
+            <Nav.Link as={Link} to='/'>My posts</Nav.Link>
           </Nav>
           <Form
             className="d-flex col-4"

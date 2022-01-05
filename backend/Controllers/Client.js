@@ -7,28 +7,28 @@ exports.signUpClient=async(req,res)=>{
     const {firstname,lastname,email,password,companyName,role}=req.body
     try {
         //check email exists
-        const client=await Client.findOne({email})
-        if(client){
+        const foundClient=await Client.findOne({email})
+        if(foundClient){
             return res.status(400).send({errors:[{msg:"Email already exists"}]})
         }
     
         //create new Client
-        const newClient=new Client({
+        const client=new Client({
             firstname,lastname,email,password,companyName,role
         })
         //Hash password
         const salt=10
         const hashpassword=await bcrypt.hash(password,salt)
-        newClient.password=hashpassword
+        client.password=hashpassword
 
-        await newClient.save()
+        await client.save()
 
         // Token
         const payload={
-            id:newClient._id
+            id:client._id
         }
-        const token=jwt.sign(payload,process.env.secret,{ expiresIn: '30d' })
-        res.send(newClient,token)
+        const token=jwt.sign(payload,process.env.secret2,{ expiresIn: '30d' })
+        res.send({client,token})
     } catch (error) {
         console.log(error)
         res.status(500).send(error.message)
@@ -53,7 +53,7 @@ exports.singInClient=async(req,res)=>{
         const payload={
             id:client._id
         }
-        const token=jwt.sign(payload,process.env.secret,{ expiresIn: '30d' })
+        const token=jwt.sign(payload,process.env.secret2,{ expiresIn: '30d' })
         res.send({client,token})
     } catch (error) {
         console.log(error)

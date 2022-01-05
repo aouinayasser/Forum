@@ -7,28 +7,28 @@ exports.signUpCallCenter=async(req,res)=>{
     const {firstname,lastname,email,password,companyName,role}=req.body
     try {
         //check email exists
-        const callCenter=await CallCenter.findOne({email})
-        if(callCenter){
+        const foundCallCenter=await CallCenter.findOne({email})
+        if(foundCallCenter){
             return res.status(400).send({errors:[{msg:"Email already exists"}]})
         }
     
         //create new Call center
-        const newCallCenter=new CallCenter({
+        const callCenter=new CallCenter({
             firstname,lastname,email,password,companyName,role
         })
         //Hash password
         const salt=10
         const hashpassword=await bcrypt.hash(password,salt)
-        newCallCenter.password=hashpassword
+        callCenter.password=hashpassword
 
-        await newCallCenter.save()
+        await callCenter.save()
 
         // Token
         const payload={
-            id:newCallCenter._id
+            id:callCenter._id
         }
-        const token=jwt.sign(payload,process.env.secret,{ expiresIn: '30d' })
-        res.send(newCallCenter,token)
+        const token=jwt.sign(payload,process.env.secret1,{ expiresIn: '30d' })
+        res.send({callCenter,token})
     } catch (error) {
         console.log(error)
         res.status(500).send(error.message)
@@ -53,7 +53,7 @@ exports.singInCallCenter=async(req,res)=>{
         const payload={
             id:callCenter._id
         }
-        const token=jwt.sign(payload,process.env.secret,{ expiresIn: '30d' })
+        const token=jwt.sign(payload,process.env.secret1,{ expiresIn: '30d' })
         res.send({callCenter,token})
     } catch (error) {
         console.log(error)

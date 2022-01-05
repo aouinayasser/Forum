@@ -1,9 +1,11 @@
 import './LoginRegister.css'
 import { Dropdown } from 'react-bootstrap'
-
+import { useState } from 'react'
 
 
 export default function Register() {
+  const [role,setRole]=useState('')
+  console.log(role)
     return(
         <div>
         <title>Register</title>
@@ -34,9 +36,9 @@ export default function Register() {
                     Vous êtes ?
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item >Chercheur d'emploi</Dropdown.Item>
-                    <Dropdown.Item >Centre d'appel</Dropdown.Item>
-                    <Dropdown.Item >Client</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>setRole('JobSeeker')} >Chercheur d'emploi</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>setRole('CallCenter')} >Centre d'appel</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>setRole('Client')} >Client</Dropdown.Item>
                 </Dropdown.Menu>
                 </Dropdown>
 
@@ -79,6 +81,16 @@ export default function Register() {
                     <i className="fa fa-lock" aria-hidden="true" />
                   </span>
                 </div>
+
+                {
+                  (role==='CallCenter'||role==='Client') && <div className="wrap-input100 validate-input" data-validate="Company name is required">
+                  <input className="input100" type="text" name="company" placeholder="Company name" />
+                  <span className="focus-input100" />
+                  <span className="symbol-input100">
+                    <i className="fa fa-lock" aria-hidden="true" />
+                  </span>
+                </div>
+                }
 
                 <div className="container-login100-form-btn">
                   <button className="login100-form-btn">

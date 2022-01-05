@@ -7,7 +7,7 @@ const jobSeekerIsAuth=(req,res,next)=>{
         return res.status(401).send({errors:[{msg:"You are not authorized"}]})
     }
     try {
-        const decoded = jwt.verify(token, process.env.secret)
+        const decoded = jwt.verify(token, process.env.secret3)
         req.jobSeeker=decoded
         next()
     } catch (error) {
