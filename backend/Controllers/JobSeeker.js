@@ -30,7 +30,7 @@ exports.signUpJobSeeker=async(req,res)=>{
         const token=jwt.sign(payload,process.env.secret3,{ expiresIn: '30d' })
         res.status(200).send({jobSeeker,token})
     } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 

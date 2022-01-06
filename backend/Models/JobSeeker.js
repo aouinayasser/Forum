@@ -21,7 +21,6 @@ const jobSeekerSchema=new schema({
     },
     role:{
         type:String,
-        required:true
     }
 })
 

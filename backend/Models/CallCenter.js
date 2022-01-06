@@ -25,7 +25,6 @@ const callCenterSchema=new schema({
     },
     role:{
         type:String,
-        required:true
     }
 })
 

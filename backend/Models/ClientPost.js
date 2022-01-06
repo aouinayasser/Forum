@@ -4,9 +4,9 @@ const schema = mongoose.Schema;
 const clientPostSchema = new schema({
   description: {
     type: String,
-    required: true,
+    required: true
   },
-  Client:{
+  Client: {
     type:schema.Types.ObjectId,
     ref:'Client'
   }

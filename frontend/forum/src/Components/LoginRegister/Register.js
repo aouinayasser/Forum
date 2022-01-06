@@ -1,11 +1,25 @@
 import './LoginRegister.css'
-import { Dropdown } from 'react-bootstrap'
+import { Dropdown,DropdownButton } from 'react-bootstrap'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { jobSeekerRegister } from '../../redux/actions/jobSeekerAuthAction'
 
 
 export default function Register() {
+  const dispatch=useDispatch()
   const [role,setRole]=useState('')
+  const [formData,setFormData]=useState({firstname:"",lastname:"",email:"",password:"",role:""})
   console.log(role)
+  const handleSelect=(e)=>{
+    setFormData({...formData,role: e})
+  }
+  const handleChange=(e)=>{
+    setFormData({...formData,[e.target.name]:e.target.value})
+  }
+  const handleJobseekerSubmit=(e)=>{
+    e.preventDefault()
+    dispatch(jobSeekerRegister(formData))
+  }
     return(
         <div>
         <title>Register</title>
@@ -26,24 +40,21 @@ export default function Register() {
                 <img src="img-01.png" alt="IMG" />
               </div>
               
-              <form className="login100-form validate-form">
+              <form className="login100-form validate-form" onSubmit={handleJobseekerSubmit} >
                 <span className="login100-form-title">
                   S'enregistrer
                 </span>
 
-                <Dropdown className='dropField' >
-                <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                    Vous êtes ?
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={()=>setRole('JobSeeker')} >Chercheur d'emploi</Dropdown.Item>
-                    <Dropdown.Item onClick={()=>setRole('CallCenter')} >Centre d'appel</Dropdown.Item>
-                    <Dropdown.Item onClick={()=>setRole('Client')} >Client</Dropdown.Item>
-                </Dropdown.Menu>
-                </Dropdown>
+                <DropdownButton title="Role" variant="dark" className='dropField' name='role' onSelect={handleSelect} >
+                
+                    <Dropdown.Item  eventKey="JobSeeker" onClick={()=>setRole('JobSeeker')} >Chercheur d'emploi</Dropdown.Item>
+                    <Dropdown.Item  eventKey="CallCenter" onClick={()=>setRole('CallCenter')} >Centre d'appel</Dropdown.Item>
+                    <Dropdown.Item  eventKey="Client" onClick={()=>setRole('Client')} >Client</Dropdown.Item>
+                
+                </DropdownButton>
 
                 <div className="wrap-input100 validate-input">
-                  <input className="input100" type="text" name="firstname" placeholder="Nom" />
+                  <input className="input100" type="text" name="firstname" placeholder="Nom" onChange={handleChange} />
                   <span className="focus-input100" />
                   <span className="symbol-input100">
                     <i className="fa fa-envelope" aria-hidden="true" />
@@ -51,15 +62,15 @@ export default function Register() {
                 </div>
                 
                 <div className="wrap-input100 validate-input">
-                  <input className="input100" type="text" name="lastname" placeholder="Prénom" />
+                  <input className="input100" type="text" name="lastname" placeholder="Prénom" onChange={handleChange} />
                   <span className="focus-input100" />
                   <span className="symbol-input100">
                     <i className="fa fa-envelope" aria-hidden="true" />
                   </span>
                 </div>
-
+                
                 <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                  <input className="input100" type="text" name="email" placeholder="Email" />
+                  <input className="input100" type="text" name="email" placeholder="Email" onChange={handleChange} />
                   <span className="focus-input100" />
                   <span className="symbol-input100">
                     <i className="fa fa-envelope" aria-hidden="true" />
@@ -67,7 +78,7 @@ export default function Register() {
                 </div>
 
                 <div className="wrap-input100 validate-input" data-validate="Password is required">
-                  <input className="input100" type="password" name="pass" placeholder="Mot de passe" />
+                  <input className="input100" type="password" name="password" placeholder="Mot de passe" onChange={handleChange} />
                   <span className="focus-input100" />
                   <span className="symbol-input100">
                     <i className="fa fa-lock" aria-hidden="true" />
@@ -75,7 +86,7 @@ export default function Register() {
                 </div>
 
                 <div className="wrap-input100 validate-input" data-validate="Confirm password is required">
-                  <input className="input100" type="password" name="pass" placeholder="Confirmer mot de passe" />
+                  <input className="input100" type="password" name="confirmPassword" placeholder="Confirmer mot de passe" />
                   <span className="focus-input100" />
                   <span className="symbol-input100">
                     <i className="fa fa-lock" aria-hidden="true" />
@@ -84,7 +95,7 @@ export default function Register() {
 
                 {
                   (role==='CallCenter'||role==='Client') && <div className="wrap-input100 validate-input" data-validate="Company name is required">
-                  <input className="input100" type="text" name="company" placeholder="Company name" />
+                  <input className="input100" type="text" name="companyName" placeholder="Company name" />
                   <span className="focus-input100" />
                   <span className="symbol-input100">
                     <i className="fa fa-lock" aria-hidden="true" />

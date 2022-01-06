@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-import authReducer from './authReducer'
+import jobSeekerAuthReducer from './jobSeekerAuthReducer'
 
 
 
 const rootReducer=combineReducers({
-    authReducer
+    jobSeekerAuthReducer
 })
 
 

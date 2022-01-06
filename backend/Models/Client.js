@@ -25,7 +25,6 @@ const clientSchema=new schema({
     },
     role:{
         type:String,
-        required:true
     }
 })
 
