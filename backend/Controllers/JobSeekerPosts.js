@@ -10,7 +10,7 @@ exports.addJobSeekerPost=async(req,res)=>{
         await post.save()
         res.send({msg:'Post added',post})
     } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 
@@ -20,7 +20,7 @@ exports.getAllJobSeekerPosts=async(req,res)=>{
         const jobSeekersPosts=await JobSeekerPost.find()
         res.send(jobSeekersPosts)
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     }
 }
 
@@ -31,7 +31,7 @@ exports.deleteJobSeekerPost=async(req,res)=>{
         await JobSeekerPost.findByIdAndDelete(jobSeekerPostId)
         res.send('Post deleted')
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     }
 }
 
@@ -42,7 +42,7 @@ exports.updateJobSeekerPost=async(req,res)=>{
         await JobSeekerPost.findByIdAndUpdate(jobSeekerPostId,{$set:{...req.body}})
         res.send('Post updated')
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     } 
 }
 
@@ -53,6 +53,6 @@ exports.getOneJobSeekerPost=async(req,res)=>{
         const post= await JobSeekerPost.findOne({_id:jobSeekerPostId})
         res.send(post)
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     }
 }

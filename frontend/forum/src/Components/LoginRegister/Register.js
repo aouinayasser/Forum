@@ -2,13 +2,15 @@ import './LoginRegister.css'
 import { Dropdown,DropdownButton } from 'react-bootstrap'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { jobSeekerRegister } from '../../redux/actions/jobSeekerAuthAction'
+import { jobSeekerRegister,callCenterRegister,clientRegister } from '../../redux/actions/AuthAction'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Register() {
+  const navigate=useNavigate()
   const dispatch=useDispatch()
   const [role,setRole]=useState('')
-  const [formData,setFormData]=useState({firstname:"",lastname:"",email:"",password:"",role:""})
+  const [formData,setFormData]=useState({firstname:"",lastname:"",email:"",password:"",role:"",companyName:""})
   console.log(role)
   const handleSelect=(e)=>{
     setFormData({...formData,role: e})
@@ -16,9 +18,11 @@ export default function Register() {
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.name]:e.target.value})
   }
-  const handleJobseekerSubmit=(e)=>{
+  const handleSubmit=(e)=>{
     e.preventDefault()
-    dispatch(jobSeekerRegister(formData))
+    role==='JobSeeker' ? dispatch(jobSeekerRegister(formData,navigate)) 
+  : role==='CallCenter' ? dispatch(callCenterRegister(formData,navigate)) 
+  : dispatch(clientRegister(formData,navigate))
   }
     return(
         <div>
@@ -40,7 +44,7 @@ export default function Register() {
                 <img src="img-01.png" alt="IMG" />
               </div>
               
-              <form className="login100-form validate-form" onSubmit={handleJobseekerSubmit} >
+              <form className="login100-form validate-form" onSubmit={handleSubmit} >
                 <span className="login100-form-title">
                   S'enregistrer
                 </span>
@@ -95,7 +99,7 @@ export default function Register() {
 
                 {
                   (role==='CallCenter'||role==='Client') && <div className="wrap-input100 validate-input" data-validate="Company name is required">
-                  <input className="input100" type="text" name="companyName" placeholder="Company name" />
+                  <input className="input100" type="text" name="companyName" placeholder="Company name" onChange={handleChange} />
                   <span className="focus-input100" />
                   <span className="symbol-input100">
                     <i className="fa fa-lock" aria-hidden="true" />

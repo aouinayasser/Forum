@@ -56,7 +56,7 @@ exports.singInJobseeker=async(req,res)=>{
         res.send({jobSeeker,token})
     } catch (error) {
         console.log(error)
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 
@@ -66,6 +66,6 @@ exports.currentJobSeeker=async(req,res)=>{
         const jobSeeker=await JobSeeker.findById(req.jobSeeker.id)
         res.send(jobSeeker)
     } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }

@@ -31,7 +31,7 @@ exports.signUpCallCenter=async(req,res)=>{
         res.send({callCenter,token})
     } catch (error) {
         console.log(error)
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 
@@ -57,7 +57,7 @@ exports.singInCallCenter=async(req,res)=>{
         res.send({callCenter,token})
     } catch (error) {
         console.log(error)
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 
@@ -67,6 +67,6 @@ exports.currentCallCenter=async(req,res)=>{
         const callCenter=await CallCenter.findById(req.callCenter.id)
         res.send(callCenter)
     } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }

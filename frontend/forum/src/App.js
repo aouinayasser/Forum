@@ -17,12 +17,12 @@ function App() {
       <Routes>
         <Route path='/posts' element={
           <PrivateRoute>
-            
+            <NavBar />
             <PostList />
-            
+            <Footer />
           </PrivateRoute>
         } />
-        <Route path='/' element={<Login />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
      

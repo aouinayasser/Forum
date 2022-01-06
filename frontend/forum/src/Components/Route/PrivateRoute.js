@@ -2,11 +2,12 @@ import {Navigate} from 'react-router-dom'
 
 
 
-export default function PrivateRoute({children,isAuth}) {
+export default function PrivateRoute({children}) {
+    const token=localStorage.getItem('token')
     return(
         <>
             {
-                isAuth ? children : <Navigate to='/login' />
+                token ? children : <Navigate to='/login' />
             }
         </>
     )

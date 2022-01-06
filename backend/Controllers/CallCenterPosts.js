@@ -10,7 +10,7 @@ exports.addCallCenterPost=async(req,res)=>{
         await post.save()
         res.send({msg:'Post added',post})
     } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 
@@ -20,7 +20,7 @@ exports.getAllCallCenterPosts=async(req,res)=>{
         const posts=await CallCenterPost.find().populate('CallCenter')
         res.send({msg:'All posts displayed',posts})
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     }
 }
 
@@ -31,7 +31,7 @@ exports.deleteCallCenterPost=async(req,res)=>{
         await CallCenterPost.findByIdAndDelete(callCenterPostId)
         res.send('Post deleted')
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     }
 }
 
@@ -42,7 +42,7 @@ exports.updateCallCenterPost=async(req,res)=>{
         await CallCenterPost.findByIdAndUpdate(callCenterPostId,{$set:{...req.body}})
         res.send('Post updated')
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     } 
 }
 
@@ -53,6 +53,6 @@ exports.getOneCallCenterPost=async(req,res)=>{
         const post= await CallCenterPost.findOne({_id:callCenterPostId}).populate('CallCenter')
         res.send(post)
     } catch (error) {
-        res.send(error.message)
+        res.send('server error')
     }
 }

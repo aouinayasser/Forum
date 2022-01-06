@@ -31,7 +31,7 @@ exports.signUpClient=async(req,res)=>{
         res.send({client,token})
     } catch (error) {
         console.log(error)
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 
@@ -57,7 +57,7 @@ exports.singInClient=async(req,res)=>{
         res.send({client,token})
     } catch (error) {
         console.log(error)
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
 
@@ -67,6 +67,6 @@ exports.currentClient=async(req,res)=>{
         const client=await Client.findById(req.client.id)
         res.send(client)
     } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).send('server error')
     }
 }
