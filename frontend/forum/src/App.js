@@ -4,17 +4,31 @@ import Login from './Components/LoginRegister/Login';
 import Register from './Components/LoginRegister/Register';
 import NavBar from './Components/Navbar/NavBar';
 import PostList from './Components/Views/PostList';
-import ViewPost from './Components/Views/ViewPost';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import PrivateRoute from './Components/Route/PrivateRoute';
-
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Home from './Components/Views/Home';
+import { currentCallCenter, currentClient, currentJobSeeker } from './redux/actions/AuthAction';
+import ViewPost from './Components/Views/ViewPost';
 
 function App() {
+  const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.role)
+  const callCenter=useSelector(state=>state.callCenterAuthReducer.role)
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      jobSeeker ? dispatch(currentJobSeeker()) : 
+      callCenter ? dispatch(currentCallCenter()) : dispatch(currentClient())
+    }
+  },[])
+
   return (
     <BrowserRouter>
     <div className="App">
       
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/posts' element={
           <PrivateRoute>
             <NavBar />
@@ -22,6 +36,7 @@ function App() {
             <Footer />
           </PrivateRoute>
         } />
+        <Route path='/viewpost' element={<ViewPost />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>

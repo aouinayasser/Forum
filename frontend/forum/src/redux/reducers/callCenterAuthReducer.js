@@ -1,11 +1,12 @@
-import { CALLCENTER_FAIL, CALLCENTER_REGISTER } from "../types"
+import { CALLCENTER_FAIL, CALLCENTER_REGISTER, GET_CALLCENTER } from "../types"
 
 
 
 const initState={
     callCenter:null,
     loading:true,
-    callCenterIsAuth:false
+    callCenterIsAuth:false,
+    role:'CallCenter'
 }
 
 function callCenterAuthReducer(state=initState,{type,payload}){
@@ -20,7 +21,10 @@ function callCenterAuthReducer(state=initState,{type,payload}){
             return{
                 ...state,callCenter:null,callCenterIsAuth:false
             } 
-           
+        case GET_CALLCENTER:
+           return {
+            ...state,callCenter:payload,callCenterIsAuth:true,loading:false
+           }   
     
         default:
            return state

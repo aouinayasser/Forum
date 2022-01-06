@@ -8,7 +8,7 @@ export default function EditPost() {
 
   return (
     <>
-      <span class="bi bi-pencil-fill text-warning" onClick={handleShow}>
+      <span className="bi bi-pencil-fill text-warning" onClick={handleShow}>
         &nbsp;&nbsp;<span style={{color:"black"}} >Edit post</span>
         </span>
 

@@ -8,7 +8,7 @@ export default function AddPost() {
 
   return (
     <>
-      <span class="bi bi-trash-fill text-danger" onClick={handleShow} >
+      <span className="bi bi-trash-fill text-danger" onClick={handleShow} >
         &nbsp;&nbsp;<span style={{ color: "black" }}>Delete post</span>
       </span>
 

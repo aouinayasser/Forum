@@ -1,4 +1,4 @@
-import { JOBSEEKER_FAIL, JOBSEEKER_REGISTER } from "../types"
+import { GET_JOBSEEKER, JOBSEEKER_FAIL, JOBSEEKER_REGISTER } from "../types"
 
 
 
@@ -6,7 +6,8 @@ import { JOBSEEKER_FAIL, JOBSEEKER_REGISTER } from "../types"
 const initState={
     jobSeeker:null,
     loading:true,
-    jobSeekerIsAuth:false
+    jobSeekerIsAuth:false,
+    role:'JobSeeker'
 }
 
 function jobSeekerAuthReducer(state=initState,{type,payload}){
@@ -20,8 +21,11 @@ function jobSeekerAuthReducer(state=initState,{type,payload}){
             localStorage.removeItem('token')
             return{
                 ...state,jobSeeker:null,jobSeekerIsAuth:false
-            } 
-           
+            }
+        case GET_JOBSEEKER:
+           return {
+            ...state,jobSeeker:payload,jobSeekerIsAuth:true,loading:false
+           }
     
         default:
            return state

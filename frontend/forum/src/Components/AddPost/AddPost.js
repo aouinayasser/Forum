@@ -8,8 +8,8 @@ export default function AddPost() {
 
   return (
     <>
-      <button type="button" class="btn btn-success" onClick={handleShow}>
-        <span class="bi bi-plus-circle" aria-hidden="true"></span>
+      <button type="button" className="btn btn-success" onClick={handleShow}>
+        <span className="bi bi-plus-circle" aria-hidden="true"></span>
         &nbsp;&nbsp;Add a post
       </button>
 

@@ -4,7 +4,7 @@ import "./Footer.css";
 export default function Footer(params) {
   return (
     <MDBFooter
-      backgroundColor="--mdb-yellow"
+      backgroundcolor="--mdb-yellow"
       className="text-center text-lg-left"
     >
       <MDBContainer className="p-4">
@@ -77,7 +77,7 @@ export default function Footer(params) {
 
       <div
         className="text-center p-3"
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+        style={{ backgroundcolor: "rgba(0, 0, 0, 0.2)" }}
       >
         &copy; {new Date().getFullYear()}{" "}
         <a className="text-light">Yasser Aouina</a>

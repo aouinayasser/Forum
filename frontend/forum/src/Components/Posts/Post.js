@@ -1,10 +1,12 @@
 import EditPost from "../EditPost/EditPost";
 import DeletePost from "../DeletePost/DeletePost"
 import "./Post.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Post() {
+  const navigate=useNavigate()
   return (
-    <div className="row">
+    <div className="row" >
       <div className="col-lg">
         <div className="container-fluid d-flex justify-content-center">
           <div
@@ -27,14 +29,13 @@ export default function Post() {
                   <span className="w-40 avatar gd-primary">P</span>
                 </a>
               </div>
-              <div className="flex">
+              <div className="flex"  onClick={()=>navigate('/viewpost')}>
                 {" "}
                 <a href="#" className="item-author text-color" data-abc="true">
                   Patrick Linod
                 </a>
                 <div className="item-except text-muted text-sm h-1x">
-                  For what reason would it be advisable for me to think about
-                  business content?
+                  {/* {description} */}
                 </div>
               </div>
               <div className="no-wrap">
@@ -88,35 +89,6 @@ export default function Post() {
           </div>
         </div>
       </div>
-      <nav>
-        <ul className="pagination">
-          <li className="page-item">
-            <a className="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">«</span>
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              1
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              2
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              3
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">»</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </div>
   );
 }
