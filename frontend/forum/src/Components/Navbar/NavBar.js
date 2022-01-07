@@ -8,16 +8,29 @@ import {
 } from "react-bootstrap";
 import "./NavBar.css";
 import {Link} from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 export default function NavBar() {
+  const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
+  const callCenter=useSelector(state=>state.callCenterAuthReducer.callCenterIsAuth)
+  const client=useSelector(state=>state.clientAuthReducer.clientIsAuth)
   return (
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
+          {
+            jobSeeker===true ? <Nav className="me-auto">
+            <Nav.Link as={Link} to='/'>Home</Nav.Link>
+          </Nav>
+          : callCenter===true || client===true ?
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
-            <Nav.Link as={Link} to='/'>My posts</Nav.Link>
+            <Nav.Link as={Link} to='/myposts'>My posts</Nav.Link>
+          </Nav> : <Nav className="me-auto">
+            <Nav.Link as={Link} to='/'>Home</Nav.Link>
+            <Nav.Link as={Link} to='/myposts'>My posts</Nav.Link>
           </Nav>
+          }
           <Form
             className="d-flex col-4"
             style={{ position: "absolute", marginLeft: "400px" }}

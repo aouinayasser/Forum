@@ -15,7 +15,7 @@ export const jobSeekerRegister = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/jobseeker/signup", formData);
     dispatch({ type: JOBSEEKER_REGISTER, payload: res.data });
-    navigate("/posts");
+    navigate("/callposts");
   } catch (error) {
     dispatch({ type: JOBSEEKER_FAIL });
   }

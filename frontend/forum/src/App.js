@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Home from './Components/Views/Home';
 import { currentCallCenter, currentClient, currentJobSeeker } from './redux/actions/AuthAction';
 import ViewPost from './Components/Views/ViewPost';
+import CallPostList from './Components/Views/CallPostList';
+import MyPosts from './Components/Views/MyPosts';
 
 function App() {
   const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.role)
@@ -33,6 +35,20 @@ function App() {
           <PrivateRoute>
             <NavBar />
             <PostList />
+            <Footer />
+          </PrivateRoute>
+        } />
+        <Route path='/callposts' element={
+          <PrivateRoute>
+            <NavBar />
+            <CallPostList />
+            <Footer />
+          </PrivateRoute>
+        } />
+        <Route path='/myposts' element={
+          <PrivateRoute>
+            <NavBar />
+            <MyPosts />
             <Footer />
           </PrivateRoute>
         } />

@@ -2,9 +2,12 @@ import EditPost from "../EditPost/EditPost";
 import DeletePost from "../DeletePost/DeletePost"
 import "./Post.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 export default function Post() {
   const navigate=useNavigate()
+  const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
   return (
     <div className="row" >
       <div className="col-lg">
@@ -44,47 +47,46 @@ export default function Post() {
                 </div>
               </div>
               <div>
-                <div className="item-action dropdown">
-                  {" "}
-                  <a
-                    href="#"
-                    data-toggle="dropdown"
-                    className="text-muted"
-                    data-abc="true"
-                  >
-                    {" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={16}
-                      height={16}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="feather feather-more-vertical"
-                    >
-                      <circle cx={12} cy={12} r={1} />
-                      <circle cx={12} cy={5} r={1} />
-                      <circle cx={12} cy={19} r={1} />
-                    </svg>{" "}
-                  </a>
-                  <div
-                    className="dropdown-menu dropdown-menu-right bg-white"
-                    role="menu"
-                  >
-                    
-                      <a className="dropdown-item edit" data-abc="true">
-                      <EditPost />
-                      </a>
-                    <div className="dropdown-divider" />{" "}
-                    <a className="dropdown-item trash" data-abc="true">
-                    <DeletePost />
+                
+                  {
+                    (!jobSeeker&&
+                      <div className="item-action dropdown">
+                      {" "}
+                      <a
+                        href="#"
+                        data-toggle="dropdown"
+                        className="text-muted"
+                        data-abc="true"
+                      >
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={16}
+                          height={16}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="feather feather-more-vertical"
+                        >
+                          <circle cx={12} cy={12} r={1} />
+                          <circle cx={12} cy={5} r={1} />
+                          <circle cx={12} cy={19} r={1} />
+                        </svg>{" "}
+                      </a><div className="dropdown-menu dropdown-menu-right bg-white" role="menu">
+                    <a className="dropdown-item edit" data-abc="true">
+                    <EditPost />
                     </a>
-                  </div>
+                  <div className="dropdown-divider" />{" "}
+                  <a className="dropdown-item trash" data-abc="true">
+                  <DeletePost />
+                  </a>
                 </div>
-              </div>
+                </div>)
+                  }
+                </div>
             </div>
           </div>
         </div>
