@@ -5,7 +5,6 @@ import "./PostList.css";
 
 
 export default function MyPosts() {
-    
     return(
         <div className='container'>
             <div className="forumContainer">

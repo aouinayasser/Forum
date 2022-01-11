@@ -11,7 +11,6 @@ export default function Register() {
   const dispatch=useDispatch()
   const [role,setRole]=useState('')
   const [formData,setFormData]=useState({firstname:"",lastname:"",email:"",password:"",role:"",companyName:""})
-  console.log(role)
   const handleSelect=(e)=>{
     setFormData({...formData,role: e})
   }
@@ -49,7 +48,7 @@ export default function Register() {
                   S'enregistrer
                 </span>
 
-                <DropdownButton title="Role" variant="dark" className='dropField' name='role' onSelect={handleSelect} >
+                <DropdownButton title="Register as..." variant="dark" className='dropField' name='role' onSelect={handleSelect} >
                 
                     <Dropdown.Item  eventKey="JobSeeker" onClick={()=>setRole('JobSeeker')} >Chercheur d'emploi</Dropdown.Item>
                     <Dropdown.Item  eventKey="CallCenter" onClick={()=>setRole('CallCenter')} >Centre d'appel</Dropdown.Item>

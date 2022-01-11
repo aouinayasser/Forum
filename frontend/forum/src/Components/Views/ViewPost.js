@@ -1,8 +1,8 @@
 import './ViewPost.css'
 import './ViewPost.scss'
+import { useSelector } from 'react-redux';
 
 export default function ViewPost() {
-  
   return (
     <>
       <div className="heading-page header-text">

@@ -1,4 +1,4 @@
-import { CLIENT_FAIL, CLIENT_REGISTER, GET_CLIENT } from "../types"
+import { CLIENT_FAIL, CLIENT_LOGIN, CLIENT_LOGOUT, CLIENT_REGISTER, GET_CLIENT } from "../types"
 
 
 
@@ -14,9 +14,15 @@ function clientAuthReducer(state=initState,{type,payload}){
         case CLIENT_REGISTER:
             localStorage.setItem('token',payload.token)
             return{
+                ...state,client:payload.client,clientIsAuth:false,loading:true
+            }
+        case CLIENT_LOGIN:
+            localStorage.setItem('token',payload.token)
+            return{
                 ...state,client:payload.client,clientIsAuth:true,loading:false
             }
         case CLIENT_FAIL:
+        case CLIENT_LOGOUT:
             localStorage.removeItem('token')
             return{
                 ...state,client:null,clientIsAuth:false
