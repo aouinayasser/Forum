@@ -3,13 +3,14 @@ import DeletePost from "../DeletePost/DeletePost"
 import "./Post.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneCallCenterPost } from "../../redux/actions/PostAction";
+import { getOneCallCenterPost, getOneClientPost } from "../../redux/actions/PostAction";
 
 
-export default function Post({callPost}) {
+export default function Post({callPost,clientPost}) {
   const dispatch=useDispatch()
   const navigate=useNavigate()
   const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
+  const callCenter=useSelector(state=>state.callCenterAuthReducer.CallCenterIsAuth)
   return (
     <div className="row" >
       <div className="col-lg">
@@ -34,13 +35,13 @@ export default function Post({callPost}) {
                   <span className="w-40 avatar gd-primary">P</span>
                 </a>
               </div>
-              <div className="flex"  onClick={()=>{dispatch(getOneCallCenterPost(callPost._id));navigate('/viewpost')}}>
+              <div className="flex"  onClick={()=>{{jobSeeker ? dispatch(getOneCallCenterPost(callPost._id)):dispatch(getOneClientPost(clientPost._id))};navigate('/viewpost')}}  >
                 {" "}
                 <a  className="item-author text-color" data-abc="true">
-                 {callPost.CallCenter.firstname} {callPost.CallCenter.lastname}
+                 {jobSeeker ? <p>{callPost.CallCenter.firstname} {callPost.CallCenter.lastname} </p>:<p> {clientPost.Client.firstname} {clientPost.Client.lastname} </p>}
                 </a>
                 <div className="item-except text-muted text-sm h-1x">
-                  {callPost.description}
+                  {jobSeeker ? <p>{callPost.description}</p> : <p> {clientPost.description} </p>}
                 </div>
               </div>
               <div className="no-wrap">

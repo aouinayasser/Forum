@@ -4,6 +4,9 @@ import "./ViewPost.css";
 import "./ViewPost.scss";
 
 export default function ViewPost() {
+  const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
+  const callCenter=useSelector(state=>state.callCenterAuthReducer.CallCenterIsAuth)
+  const clientPost = useSelector(state=>state.clientPostReducer.clientPost)
   const {callCenterPost,loading} = useSelector(
     (state) => state.callCenterPostReducer
   );
@@ -37,16 +40,22 @@ export default function ViewPost() {
                   </div>
                 </div>
                 <div className="blog-card__info">
-                  <h5>{callCenterPost&&callCenterPost.CallCenter.companyName}</h5>
+                  {jobSeeker ? <h5>{callCenterPost&&callCenterPost.CallCenter.companyName}</h5> :
+                   <h5>{clientPost&&clientPost.Client.companyName}</h5>}
                   <p>
                     <a className="icon-link mr-3">
                       <i className="fa fa-pencil-square-o" />
-                      {callCenterPost&&callCenterPost.CallCenter.firstname} {callCenterPost&&callCenterPost.CallCenter.lastname} posted this
+                      {jobSeeker ? <p>{callCenterPost&&callCenterPost.CallCenter.firstname} {callCenterPost&&callCenterPost.CallCenter.lastname} posted this</p> :
+                      <p>{clientPost&&clientPost.Client.firstname} {clientPost&&clientPost.Client.lastname} posted this</p> }
                     </a>
                   </p>
-                  <p>
+                  {jobSeeker?<p>
                     {callCenterPost&&callCenterPost.description}
-                  </p>
+                  </p>:
+                  <p>
+                  {clientPost&&clientPost.description}
+                </p>
+                  }
                 </div>
                 <div className="blog-card__info">
                   <p>
@@ -56,7 +65,9 @@ export default function ViewPost() {
                     </a>
                   </p>
                   <ul>
-                    <li>Email : {callCenterPost&&callCenterPost.CallCenter.email}</li>
+                    {jobSeeker?<li>Email : {callCenterPost&&callCenterPost.CallCenter.email}</li>:
+                    <li>Email : {clientPost&&clientPost.Client.email}</li>
+                    }
                   </ul>
                 </div>
               </article>

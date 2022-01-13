@@ -16,6 +16,7 @@ import MyPosts from './Components/Views/MyPosts';
 
 function App() {
   const callCenterPosts=useSelector(state=>state.callCenterPostReducer.callCenterPosts)
+  const clientPosts=useSelector(state=>state.clientPostReducer.clientPosts)
   const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.role)
   const callCenter=useSelector(state=>state.callCenterAuthReducer.role)
   const dispatch=useDispatch()
@@ -29,13 +30,12 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/posts' element={
           <PrivateRoute>
             <NavBar />
-            <PostList />
+            <PostList clientPosts={clientPosts}  />
             <Footer />
           </PrivateRoute>
         } />
