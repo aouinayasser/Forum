@@ -15,6 +15,7 @@ import CallPostList from './Components/Views/CallPostList';
 import MyPosts from './Components/Views/MyPosts';
 
 function App() {
+  const callCenterPosts=useSelector(state=>state.callCenterPostReducer.callCenterPosts)
   const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.role)
   const callCenter=useSelector(state=>state.callCenterAuthReducer.role)
   const dispatch=useDispatch()
@@ -24,7 +25,7 @@ function App() {
       callCenter ? dispatch(currentCallCenter()) : dispatch(currentClient())
     }
   },[])
-
+  
   return (
     <BrowserRouter>
     <div className="App">
@@ -41,7 +42,7 @@ function App() {
         <Route path='/callposts' element={
           <PrivateRoute>
             <NavBar />
-            <CallPostList />
+            <CallPostList callCenterPosts={callCenterPosts} />
             <Footer />
           </PrivateRoute>
         } />

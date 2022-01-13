@@ -61,11 +61,11 @@ router.put("/:jobSeekerPostId",jobSeekerIsAuth, updateJobSeekerPost);
 //@ method get
 //@ url /:callCenterPostId
 // req.params
-router.get("/callCenterPosts/:callCenterPostId",callCenterIsAuth, getOneCallCenterPost);
+router.get("/callCenterPosts/:callCenterPostId", getOneCallCenterPost);
 
 //@ method get
-//@ url /
-router.get("/callCenterPosts",callCenterIsAuth, getAllCallCenterPosts);
+//@ url /callCenterPosts
+router.get("/callCenterPosts", getAllCallCenterPosts);
 
 //@ method post
 //@ url /addPost
@@ -88,11 +88,11 @@ router.put("/:callCenterPostId",callCenterIsAuth, updateCallCenterPost);
 //@ method get
 //@ url /:clientPostId
 // req.params
-router.get("/clientPosts/:clientPostId",clientIsAuth, getOneClientPost);
+router.get("/clientPosts/:clientPostId", getOneClientPost);
 
 //@ method get
-//@ url /
-router.get("/clientPosts",clientIsAuth, getAllClientPosts);
+//@ url /clientPosts
+router.get("/clientPosts", getAllClientPosts);
 
 //@ method post
 //@ url /addPost

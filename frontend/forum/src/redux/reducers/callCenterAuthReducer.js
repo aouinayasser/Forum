@@ -14,7 +14,7 @@ function callCenterAuthReducer(state=initState,{type,payload}){
         case CALLCENTER_REGISTER:
             localStorage.setItem('token',payload.token)
             return{
-                ...state,callCenter:payload.callCenter,callCenterIsAuth:false,loading:true
+                ...state,callCenter:payload.callCenter,callCenterIsAuth:true,loading:true
             }
         case CALLCENTER_LOGIN:
             localStorage.setItem('token',payload.token)

@@ -63,7 +63,7 @@ export default function Login() {
                   <span className="txt1">
                     Oublié :
                   </span>
-                  <a className="txt2" href="#">
+                  <a className="txt2" >
                     Email / Mot de passe?
                   </a>
                 </div>

@@ -2,10 +2,12 @@ import EditPost from "../EditPost/EditPost";
 import DeletePost from "../DeletePost/DeletePost"
 import "./Post.css";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getOneCallCenterPost } from "../../redux/actions/PostAction";
 
 
-export default function Post() {
+export default function Post({callPost}) {
+  const dispatch=useDispatch()
   const navigate=useNavigate()
   const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
   return (
@@ -28,17 +30,17 @@ export default function Post() {
               style={{}}
             >
               <div>
-                <a href="#" data-abc="true">
+                <a  data-abc="true">
                   <span className="w-40 avatar gd-primary">P</span>
                 </a>
               </div>
-              <div className="flex"  onClick={()=>navigate('/viewpost')}>
+              <div className="flex"  onClick={()=>{dispatch(getOneCallCenterPost(callPost._id));navigate('/viewpost')}}>
                 {" "}
-                <a href="#" className="item-author text-color" data-abc="true">
-                  Patrick Linod
+                <a  className="item-author text-color" data-abc="true">
+                 {callPost.CallCenter.firstname} {callPost.CallCenter.lastname}
                 </a>
                 <div className="item-except text-muted text-sm h-1x">
-                  {/* {description} */}
+                  {callPost.description}
                 </div>
               </div>
               <div className="no-wrap">
@@ -53,7 +55,7 @@ export default function Post() {
                       <div className="item-action dropdown">
                       {" "}
                       <a
-                        href="#"
+                        
                         data-toggle="dropdown"
                         className="text-muted"
                         data-abc="true"

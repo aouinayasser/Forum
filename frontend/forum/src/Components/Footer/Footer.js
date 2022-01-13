@@ -24,22 +24,22 @@ export default function Footer(params) {
 
             <ul className="list-unstyled mb-0">
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 1
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 2
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 3
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 4
                 </a>
               </li>
@@ -51,22 +51,22 @@ export default function Footer(params) {
 
             <ul className="list-unstyled">
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 1
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 2
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 3
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <a  className="text-light">
                   Link 4
                 </a>
               </li>

@@ -16,27 +16,27 @@ export default function MyPosts() {
             <nav>
         <ul className="pagination">
           <li className="page-item">
-            <a className="page-link" href="#" aria-label="Previous">
+            <a className="page-link"  aria-label="Previous">
               <span aria-hidden="true">«</span>
             </a>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#">
+            <a className="page-link" >
               1
             </a>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#">
+            <a className="page-link" >
               2
             </a>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#">
+            <a className="page-link" >
               3
             </a>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#" aria-label="Next">
+            <a className="page-link"  aria-label="Next">
               <span aria-hidden="true">»</span>
             </a>
           </li>

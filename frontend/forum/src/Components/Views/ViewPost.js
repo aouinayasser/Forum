@@ -1,10 +1,16 @@
-import './ViewPost.css'
-import './ViewPost.scss'
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import Footer from "../Footer/Footer";
+import "./ViewPost.css";
+import "./ViewPost.scss";
 
 export default function ViewPost() {
+  const {callCenterPost,loading} = useSelector(
+    (state) => state.callCenterPostReducer
+  );
   return (
     <>
+    {
+      loading ? <h2>loading</h2> :<>
       <div className="heading-page header-text">
         <section className="page-heading">
           <div className="container">
@@ -25,32 +31,32 @@ export default function ViewPost() {
               <article className="blog-card">
                 <div className="blog-card__background">
                   <div className="card__background--wrapper">
-                    <div className="card__background--main" >
+                    <div className="card__background--main">
                       <div className="card__background--layer" />
                     </div>
                   </div>
                 </div>
                 <div className="blog-card__info">
-                  <h5>Mariem</h5>
+                  <h5>{callCenterPost&&callCenterPost.CallCenter.companyName}</h5>
                   <p>
-                    <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o" />Mariem posted this</a>
+                    <a className="icon-link mr-3">
+                      <i className="fa fa-pencil-square-o" />
+                      {callCenterPost&&callCenterPost.CallCenter.firstname} {callCenterPost&&callCenterPost.CallCenter.lastname} posted this
+                    </a>
                   </p>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque vero libero voluptatibus earum? Alias dignissimos quo cum, nulla esse facere atque, blanditiis doloribus at sunt quas, repellendus vel? Et, hic!</p>
+                  <p>
+                    {callCenterPost&&callCenterPost.description}
+                  </p>
                 </div>
                 <div className="blog-card__info">
                   <p>
-                    <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o" />Nom de la société</a>
+                    <a className="icon-link mr-3">
+                      <i className="fa fa-pencil-square-o" />
+                      Informations de la société
+                    </a>
                   </p>
                   <ul>
-                      <li>
-                          Email :
-                      </li>
-                      <li>
-                        Phone number :
-                      </li>
-                      <li>
-                          Adress : 
-                      </li>
+                    <li>Email : {callCenterPost&&callCenterPost.CallCenter.email}</li>
                   </ul>
                 </div>
               </article>
@@ -58,10 +64,13 @@ export default function ViewPost() {
           </div>
         </div>
         <section className="detail-page">
-          <div className="container mt-5">
-          </div>
+          <div className="container mt-5"></div>
         </section>
       </div>
+      <Footer />
     </>
+    }
+    </>
+    
   );
 }

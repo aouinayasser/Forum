@@ -14,7 +14,7 @@ function clientAuthReducer(state=initState,{type,payload}){
         case CLIENT_REGISTER:
             localStorage.setItem('token',payload.token)
             return{
-                ...state,client:payload.client,clientIsAuth:false,loading:true
+                ...state,client:payload.client,clientIsAuth:true,loading:false
             }
         case CLIENT_LOGIN:
             localStorage.setItem('token',payload.token)
