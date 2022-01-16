@@ -3,7 +3,7 @@ import { CALLCENTER_GETALLPOSTS, CALLCENTER_GETONEPOST } from "../types";
 const initState = {
   callCenterPosts: [],
   callCenterPost: {},
-  loading:true
+  callLoading:true
 };
 
 function callCenterPostReducer(state = initState, { type, payload }) {
@@ -16,7 +16,7 @@ function callCenterPostReducer(state = initState, { type, payload }) {
     case CALLCENTER_GETONEPOST:
       return {
         ...state,
-        callCenterPost: payload,loading:false
+        callCenterPost: payload,callLoading:false
       };
 
     default:

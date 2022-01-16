@@ -1,18 +1,22 @@
 import EditPost from "../EditPost/EditPost";
-import DeletePost from "../DeletePost/DeletePost"
+import DeletePost from "../DeletePost/DeletePost";
 import "./Post.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneCallCenterPost, getOneClientPost } from "../../redux/actions/PostAction";
+import {
+  getOneCallCenterPost,
+  getOneClientPost,
+} from "../../redux/actions/PostAction";
 
+export default function Post({ callPost, clientPost }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const jobSeeker = useSelector(
+    (state) => state.jobSeekerAuthReducer.jobSeekerIsAuth
+  );
 
-export default function Post({callPost,clientPost}) {
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
-  const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
-  const callCenter=useSelector(state=>state.callCenterAuthReducer.CallCenterIsAuth)
   return (
-    <div className="row" >
+    <div className="row">
       <div className="col-lg">
         <div className="container-fluid d-flex justify-content-center">
           <div
@@ -31,17 +35,42 @@ export default function Post({callPost,clientPost}) {
               style={{}}
             >
               <div>
-                <a  data-abc="true">
+                <a data-abc="true">
                   <span className="w-40 avatar gd-primary">P</span>
                 </a>
               </div>
-              <div className="flex"  onClick={()=>{{jobSeeker ? dispatch(getOneCallCenterPost(callPost._id)):dispatch(getOneClientPost(clientPost._id))};navigate('/viewpost')}}  >
+              <div
+                className="flex"
+                onClick={() => {
+                  {
+                    jobSeeker
+                      ? dispatch(getOneCallCenterPost(callPost._id))
+                      : dispatch(getOneClientPost(clientPost._id));
+                  }
+                  navigate("/viewpost");
+                }}
+              >
                 {" "}
-                <a  className="item-author text-color" data-abc="true">
-                 {jobSeeker ? <p>{callPost.CallCenter.firstname} {callPost.CallCenter.lastname} </p>:<p> {clientPost.Client.firstname} {clientPost.Client.lastname} </p>}
+                <a className="item-author text-color" data-abc="true">
+                  {jobSeeker ? (
+                    <p>
+                      {callPost.CallCenter.firstname}{" "}
+                      {callPost.CallCenter.lastname}{" "}
+                    </p>
+                  ) : (
+                    <p>
+                      {" "}
+                      {clientPost.Client.firstname} {clientPost.Client.lastname}{" "}
+                      
+                    </p>
+                  )}
                 </a>
                 <div className="item-except text-muted text-sm h-1x">
-                  {jobSeeker ? <p>{callPost.description}</p> : <p> {clientPost.description} </p>}
+                  {jobSeeker ? (
+                    <p>{callPost.description}</p>
+                  ) : (
+                    <p> {clientPost.description} </p>
+                  )}
                 </div>
               </div>
               <div className="no-wrap">
@@ -50,46 +79,47 @@ export default function Post({callPost,clientPost}) {
                 </div>
               </div>
               <div>
-                
-                  {
-                    (!jobSeeker&&
-                      <div className="item-action dropdown">
+                {!jobSeeker && (
+                  <div className="item-action dropdown">
+                    {" "}
+                    <a
+                      data-toggle="dropdown"
+                      className="text-muted"
+                      data-abc="true"
+                    >
                       {" "}
-                      <a
-                        
-                        data-toggle="dropdown"
-                        className="text-muted"
-                        data-abc="true"
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={16}
+                        height={16}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-more-vertical"
                       >
-                        {" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={16}
-                          height={16}
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="feather feather-more-vertical"
-                        >
-                          <circle cx={12} cy={12} r={1} />
-                          <circle cx={12} cy={5} r={1} />
-                          <circle cx={12} cy={19} r={1} />
-                        </svg>{" "}
-                      </a><div className="dropdown-menu dropdown-menu-right bg-white" role="menu">
-                    <a className="dropdown-item edit" data-abc="true">
-                    <EditPost />
+                        <circle cx={12} cy={12} r={1} />
+                        <circle cx={12} cy={5} r={1} />
+                        <circle cx={12} cy={19} r={1} />
+                      </svg>{" "}
                     </a>
-                  <div className="dropdown-divider" />{" "}
-                  <a className="dropdown-item trash" data-abc="true">
-                  <DeletePost />
-                  </a>
-                </div>
-                </div>)
-                  }
-                </div>
+                    <div
+                      className="dropdown-menu dropdown-menu-right bg-white"
+                      role="menu"
+                    >
+                      <a className="dropdown-item edit" data-abc="true">
+                        <EditPost />
+                      </a>
+                      <div className="dropdown-divider" />{" "}
+                      <a className="dropdown-item trash" data-abc="true">
+                        <DeletePost />
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

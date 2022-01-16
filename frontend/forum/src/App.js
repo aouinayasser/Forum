@@ -46,13 +46,7 @@ function App() {
             <Footer />
           </PrivateRoute>
         } />
-        <Route path='/myposts' element={
-          <PrivateRoute>
-            <NavBar />
-            <MyPosts />
-            <Footer />
-          </PrivateRoute>
-        } />
+        <Route path='/myposts' element={<MyPosts /> } />
         <Route path='/viewpost' element={<ViewPost />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

@@ -3,7 +3,7 @@ import { CLIENT_GETALLPOSTS, CLIENT_GETONEPOST } from "../types";
 const initState = {
   clientPosts: [],
   clientPost: {},
-  loading: true,
+  clientLoading: true,
 };
 
 function clientPostReducer(state = initState, { type, payload }) {
@@ -17,7 +17,7 @@ function clientPostReducer(state = initState, { type, payload }) {
       return {
         ...state,
         clientPost: payload,
-        loading: false,
+        clientLoading: false,
       };
 
     default:

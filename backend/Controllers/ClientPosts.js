@@ -17,7 +17,7 @@ exports.addClientPost=async(req,res)=>{
 // Get all Post
 exports.getAllClientPosts=async(req,res)=>{
     try {
-        const posts=await ClientPost.find()
+        const posts=await ClientPost.find().populate('Client')
         res.send({msg:'All posts displayed',posts})
     } catch (error) {
         res.send('server error')
@@ -50,7 +50,7 @@ exports.updateClientPost=async(req,res)=>{
 exports.getOneClientPost=async(req,res)=>{
     const {clientPostId}=req.params
     try {
-        const post= await ClientPost.findOne({_id:clientPostId})
+        const post= await ClientPost.findOne({_id:clientPostId}).populate('Client')
         res.send(post)
     } catch (error) {
         res.send('server error')

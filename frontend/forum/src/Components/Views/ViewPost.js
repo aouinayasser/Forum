@@ -6,14 +6,14 @@ import "./ViewPost.scss";
 export default function ViewPost() {
   const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
   const callCenter=useSelector(state=>state.callCenterAuthReducer.CallCenterIsAuth)
-  const clientPost = useSelector(state=>state.clientPostReducer.clientPost)
-  const {callCenterPost,loading} = useSelector(
+  const {clientPost,clientLoading} = useSelector(state=>state.clientPostReducer)
+  const {callCenterPost,callLoading} = useSelector(
     (state) => state.callCenterPostReducer
   );
   return (
     <>
     {
-      loading ? <h2>loading</h2> :<>
+      callLoading && clientLoading ? <h2>loading</h2> :<>
       <div className="heading-page header-text">
         <section className="page-heading">
           <div className="container">
@@ -65,8 +65,8 @@ export default function ViewPost() {
                     </a>
                   </p>
                   <ul>
-                    {jobSeeker?<li>Email : {callCenterPost&&callCenterPost.CallCenter.email}</li>:
-                    <li>Email : {clientPost&&clientPost.Client.email}</li>
+                    {jobSeeker?<p>Email : {callCenterPost&&callCenterPost.CallCenter.email}</p>:
+                    <p>Email : {clientPost&&clientPost.Client.email}</p>
                     }
                   </ul>
                 </div>

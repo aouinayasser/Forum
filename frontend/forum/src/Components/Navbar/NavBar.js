@@ -7,7 +7,7 @@ import {
   Button,
 } from "react-bootstrap";
 import "./NavBar.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   callCenterLogout,
