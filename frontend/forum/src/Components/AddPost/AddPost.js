@@ -1,10 +1,21 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCallCenterPost, addClientPost } from "../../redux/actions/PostAction";
 
 export default function AddPost() {
+  const callCenterIsAuth=useSelector(state=>state.callCenterAuthReducer.callCenterIsAuth)
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [addPost, setAddPost] = useState({ description: "" });
+  const handleChange = (e) => {
+    setAddPost({ ...addPost, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = () => {
+    callCenterIsAuth ? dispatch(addCallCenterPost()) : dispatch(addClientPost())
+  };
 
   return (
     <>
@@ -18,22 +29,23 @@ export default function AddPost() {
           <Modal.Title>Add a post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" >
               <Form.Label>Title</Form.Label>
               <Form.Control type="text" placeholder="Title" />
-            </Form.Group>
-            <Form.Group className="mb-3" >
               <Form.Label>Description</Form.Label>
-              <Form.Control type="text" as='textarea' placeholder="Description" />
-            </Form.Group>
-          </Form>
+              <Form.Control
+                type="text"
+                as="textarea"
+                placeholder="Description"
+                name="description"
+                onChange={handleChange}
+              />
+            
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={()=>{handleSubmit();handleClose()}}>
             Save Changes
           </Button>
         </Modal.Footer>

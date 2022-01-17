@@ -1,3 +1,5 @@
+import EditPost from "../EditPost/EditPost";
+import DeletePost from "../DeletePost/DeletePost";
 import "./Post.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,13 +8,12 @@ import {
   getOneClientPost,
 } from "../../redux/actions/PostAction";
 
-export default function Post({ callPost, clientPost }) {
+export default function MyPost({ callPost, clientPost }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const jobSeeker = useSelector(
     (state) => state.jobSeekerAuthReducer.jobSeekerIsAuth
   );
-  const {clientIsAuth} = useSelector(state=>state.clientAuthReducer)
 
   return (
     <div className="row">
@@ -42,7 +43,7 @@ export default function Post({ callPost, clientPost }) {
                 className="flex"
                 onClick={() => {
                   {
-                    jobSeeker || clientIsAuth
+                    jobSeeker
                       ? dispatch(getOneCallCenterPost(callPost._id))
                       : dispatch(getOneClientPost(clientPost._id));
                   }
@@ -51,7 +52,7 @@ export default function Post({ callPost, clientPost }) {
               >
                 {" "}
                 <a className="item-author text-color" data-abc="true">
-                  {jobSeeker || clientIsAuth ? (
+                  {jobSeeker ? (
                     <p>
                       {callPost.CallCenter.firstname}{" "}
                       {callPost.CallCenter.lastname}{" "}
@@ -60,11 +61,12 @@ export default function Post({ callPost, clientPost }) {
                     <p>
                       {" "}
                       {clientPost.Client.firstname} {clientPost.Client.lastname}{" "}
+                      
                     </p>
                   )}
                 </a>
                 <div className="item-except text-muted text-sm h-1x">
-                  {jobSeeker || clientIsAuth ? (
+                  {jobSeeker ? (
                     <p>{callPost.description}</p>
                   ) : (
                     <p> {clientPost.description} </p>
@@ -77,6 +79,46 @@ export default function Post({ callPost, clientPost }) {
                 </div>
               </div>
               <div>
+                
+                  <div className="item-action dropdown">
+                    {" "}
+                    <a
+                      data-toggle="dropdown"
+                      className="text-muted"
+                      data-abc="true"
+                    >
+                      {" "}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={16}
+                        height={16}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-more-vertical"
+                      >
+                        <circle cx={12} cy={12} r={1} />
+                        <circle cx={12} cy={5} r={1} />
+                        <circle cx={12} cy={19} r={1} />
+                      </svg>{" "}
+                    </a>
+                    <div
+                      className="dropdown-menu dropdown-menu-right bg-white"
+                      role="menu"
+                    >
+                      <a className="dropdown-item edit" data-abc="true">
+                        <EditPost />
+                      </a>
+                      <div className="dropdown-divider" />{" "}
+                      <a className="dropdown-item trash" data-abc="true">
+                        <DeletePost />
+                      </a>
+                    </div>
+                  </div>
+               
               </div>
             </div>
           </div>

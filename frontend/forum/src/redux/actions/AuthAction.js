@@ -61,7 +61,7 @@ export const clientRegister = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/client/signup", formData);
     dispatch({ type: CLIENT_REGISTER, payload: res.data });
-    navigate("/posts");
+    navigate("/ClientCallPostList");
   } catch (error) {
     dispatch({ type: CLIENT_FAIL });
   }
@@ -71,7 +71,7 @@ export const clientLogin = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/client/signin", formData);
     dispatch({ type: CLIENT_LOGIN, payload: res.data });
-    navigate("/posts");
+    navigate("/ClientCallPostList");
   } catch (error) {
     dispatch({ type: CLIENT_FAIL });
   }

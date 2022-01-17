@@ -5,7 +5,7 @@ import "./ViewPost.scss";
 
 export default function ViewPost() {
   const jobSeeker=useSelector(state=>state.jobSeekerAuthReducer.jobSeekerIsAuth)
-  const callCenter=useSelector(state=>state.callCenterAuthReducer.CallCenterIsAuth)
+  const {clientIsAuth}=useSelector(state=>state.clientAuthReducer)
   const {clientPost,clientLoading} = useSelector(state=>state.clientPostReducer)
   const {callCenterPost,callLoading} = useSelector(
     (state) => state.callCenterPostReducer
@@ -40,16 +40,16 @@ export default function ViewPost() {
                   </div>
                 </div>
                 <div className="blog-card__info">
-                  {jobSeeker ? <h5>{callCenterPost&&callCenterPost.CallCenter.companyName}</h5> :
+                  {jobSeeker || clientIsAuth ? <h5>{callCenterPost&&callCenterPost.CallCenter.companyName}</h5> :
                    <h5>{clientPost&&clientPost.Client.companyName}</h5>}
                   <p>
                     <a className="icon-link mr-3">
                       <i className="fa fa-pencil-square-o" />
-                      {jobSeeker ? <p>{callCenterPost&&callCenterPost.CallCenter.firstname} {callCenterPost&&callCenterPost.CallCenter.lastname} posted this</p> :
+                      {jobSeeker || clientIsAuth ? <p>{callCenterPost&&callCenterPost.CallCenter.firstname} {callCenterPost&&callCenterPost.CallCenter.lastname} posted this</p> :
                       <p>{clientPost&&clientPost.Client.firstname} {clientPost&&clientPost.Client.lastname} posted this</p> }
                     </a>
                   </p>
-                  {jobSeeker?<p>
+                  {jobSeeker|| clientIsAuth ?<p>
                     {callCenterPost&&callCenterPost.description}
                   </p>:
                   <p>
@@ -65,7 +65,7 @@ export default function ViewPost() {
                     </a>
                   </p>
                   <ul>
-                    {jobSeeker?<p>Email : {callCenterPost&&callCenterPost.CallCenter.email}</p>:
+                    {jobSeeker || clientIsAuth ?<p>Email : {callCenterPost&&callCenterPost.CallCenter.email}</p>:
                     <p>Email : {clientPost&&clientPost.Client.email}</p>
                     }
                   </ul>

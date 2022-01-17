@@ -12,8 +12,6 @@ export default function CallPostList({callCenterPosts}) {
   return (
     <div className="container">
       <div className="forumContainer">
-        <div id="addPost" className="row col-sm-2">
-        </div>
         {
           callCenterPosts.map((callPost)=>(<Post callPost={callPost} key={callPost._id}/> ))
         }

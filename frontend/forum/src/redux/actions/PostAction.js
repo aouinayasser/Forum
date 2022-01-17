@@ -27,7 +27,6 @@ export const getOneCallCenterPost = (id) => async (dispatch) => {
 export const addCallCenterPost = (formData) => async (dispatch) => {
   try {
     await axios.post("/api/posts/addCallCenterPost", formData);
-    dispatch(getCallCentersPosts());
   } catch (error) {
     console.log(error.response.data);
   }

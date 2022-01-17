@@ -1,7 +1,7 @@
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 
-export default function AddPost() {
+export default function DeletePost() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
