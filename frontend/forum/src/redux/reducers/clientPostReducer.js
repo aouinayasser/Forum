@@ -11,7 +11,7 @@ function clientPostReducer(state = initState, { type, payload }) {
     case CLIENT_GETALLPOSTS:
       return {
         ...state,
-        clientPosts: payload.posts,
+        clientPosts: payload.posts,clientLoading:false
       };
     case CLIENT_GETONEPOST:
       return {

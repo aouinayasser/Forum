@@ -13,17 +13,20 @@ function clientAuthReducer(state=initState,{type,payload}){
     switch (type) {
         case CLIENT_REGISTER:
             localStorage.setItem('token',payload.token)
+            localStorage.setItem('email',payload.client.email)
             return{
                 ...state,client:payload.client,clientIsAuth:true,loading:false
             }
         case CLIENT_LOGIN:
             localStorage.setItem('token',payload.token)
+            localStorage.setItem('email',payload.client.email)
             return{
                 ...state,client:payload.client,clientIsAuth:true,loading:false
             }
         case CLIENT_FAIL:
         case CLIENT_LOGOUT:
             localStorage.removeItem('token')
+            localStorage.removeItem('email')
             return{
                 ...state,client:null,clientIsAuth:false
             }

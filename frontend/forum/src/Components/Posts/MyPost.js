@@ -11,8 +11,8 @@ import {
 export default function MyPost({ callPost, clientPost }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const jobSeeker = useSelector(
-    (state) => state.jobSeekerAuthReducer.jobSeekerIsAuth
+  const callcenter = useSelector(
+    (state) => state.callCenterAuthReducer.callCenterIsAuth
   );
 
   return (
@@ -43,7 +43,7 @@ export default function MyPost({ callPost, clientPost }) {
                 className="flex"
                 onClick={() => {
                   {
-                    jobSeeker
+                    callcenter
                       ? dispatch(getOneCallCenterPost(callPost._id))
                       : dispatch(getOneClientPost(clientPost._id));
                   }
@@ -52,7 +52,7 @@ export default function MyPost({ callPost, clientPost }) {
               >
                 {" "}
                 <a className="item-author text-color" data-abc="true">
-                  {jobSeeker ? (
+                  {callcenter ? (
                     <p>
                       {callPost.CallCenter.firstname}{" "}
                       {callPost.CallCenter.lastname}{" "}
@@ -66,7 +66,7 @@ export default function MyPost({ callPost, clientPost }) {
                   )}
                 </a>
                 <div className="item-except text-muted text-sm h-1x">
-                  {jobSeeker ? (
+                  {callcenter ? (
                     <p>{callPost.description}</p>
                   ) : (
                     <p> {clientPost.description} </p>

@@ -11,7 +11,7 @@ function callCenterPostReducer(state = initState, { type, payload }) {
     case CALLCENTER_GETALLPOSTS:
       return {
         ...state,
-        callCenterPosts: payload.posts
+        callCenterPosts: payload.posts,callLoading:false
       };
     case CALLCENTER_GETONEPOST:
       return {
