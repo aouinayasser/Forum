@@ -1,0 +1,174 @@
+{
+  "About": {
+    "paragraph": "We provide customers with an alternative communication channel to report service inquiries. Rather than writing an email or traveling to a store, clients can simply use our platform, and post their offers, and receive a response from our engeged call centers, as well for our call centers can do so and recieve a response from job seekers interested in their offers, job seekers in their turn could check all of the available inqueries and offers posted by our engaged call centers. Many people prefer this type of support over other mediums as it provides immediate service and personalized solutions.",
+    "Why": [
+      "Practical",
+      "Organized",
+      "Fast",
+      "Diverse"
+    ],
+    "Why2": [
+      "Available to anyone",
+      "Easy to use",
+      "10,000+ Offers",
+      "Accessed from anywhere"
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Communicate",
+      "largeImage": "img/portfolio/01-large.jpg",
+      "smallImage": "img/portfolio/01-small.jpg"
+    },
+    {
+      "title": "Work from anywhere",
+      "largeImage": "img/portfolio/02-large.jpg",
+      "smallImage": "img/portfolio/02-small.jpg"
+    },
+    {
+      "title": "Work at anytime",
+      "largeImage": "img/portfolio/03-large.jpg",
+      "smallImage": "img/portfolio/03-small.jpg"
+    },
+    {
+      "title": "Broadcast offers",
+      "largeImage": "img/portfolio/04-large.jpg",
+      "smallImage": "img/portfolio/04-small.jpg"
+    },
+    {
+      "title": "Get the job done",
+      "largeImage": "img/portfolio/05-large.jpg",
+      "smallImage": "img/portfolio/05-small.jpg"
+    },
+    {
+      "title": "Get paid",
+      "largeImage": "img/portfolio/06-large.jpg",
+      "smallImage": "img/portfolio/06-small.jpg"
+    },
+    {
+      "title": "Business expansion",
+      "largeImage": "img/portfolio/07-large.jpg",
+      "smallImage": "img/portfolio/07-small.jpg"
+    },
+    {
+      "title": "Income garanteed",
+      "largeImage": "img/portfolio/08-large.jpg",
+      "smallImage": "img/portfolio/08-small.jpg"
+    },
+    {
+      "title": "Flexibility",
+      "largeImage": "img/portfolio/09-large.jpg",
+      "smallImage": "img/portfolio/09-small.jpg"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-edit",
+      "name": "Write your offers"
+    },
+    {
+      "icon": "fa fa-comments",
+      "name": "Communicate with offer providers"
+    },
+    {
+      "icon": "fa fa-user",
+      "name": "Everyone is verified"
+    },
+    {
+      "icon": "fa fa-language",
+      "name": "Multi-language offers"
+    },
+    {
+      "icon": "fa fa-plane",
+      "name": "No need to travel"
+    },
+    {
+      "icon": "fa fa-users",
+      "name": "Available to anyone"
+    }
+  ],
+  "Testimonials": [
+    {
+      "img": "img/testimonials/01.jpg",
+      "text": "\"iCall is going to make your life a lot easier. You don't have to relocate to get offers.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/02.jpg",
+      "text": "\"iCall makes it super easy and is well worth the money. The ease of use of the whole thing.\"",
+      "name": "Johnathan Doe"
+    },
+    {
+      "img": "img/testimonials/03.jpg",
+      "text": "\"Fast, practical and gets to job done. I fully recommend iCall, my clients are happy with the quality.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/04.jpg",
+      "text": "\"I got a job offer in just a few days and my new employer have a great working enviroment.\"",
+      "name": "Johnathan Doe"
+    },
+    {
+      "img": "img/testimonials/05.jpg",
+      "text": "\"My customers are all satisfied with the services and my revenew were never been better.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/06.jpg",
+      "text": "\"As a business owner i could confirm that the work flow and results are astonoshing.\"",
+      "name": "Johnathan Doe"
+    }
+  ],
+  "Team": [
+    {
+      "img": "img/team/01.jpg",
+      "name": "John Doe",
+      "job": "Director"
+    },
+    {
+      "img": "img/team/02.jpg",
+      "name": "Mike Doe",
+      "job": "Senior Designer"
+    },
+    {
+      "img": "img/team/03.jpg",
+      "name": "Jane Doe",
+      "job": "Senior Designer"
+    },
+    {
+      "img": "img/team/04.jpg",
+      "name": "Karen Doe",
+      "job": "Project Manager"
+    }
+  ],
+  "Contact": {
+    "address": "4321 California St, San Francisco, CA 12345 ",
+    "phone": "+1 123 456 1234",
+    "email": "info@company.com",
+    "facebook": "fb.com",
+    "twitter": "twitter.com",
+    "youtube": "youtube.com"
+  },
+  "Features": [
+    {
+      "icon": "fa fa-comments-o",
+      "title": "We connect",
+      "text": "We connect Job seekers, Clients and Call Centers."
+    },
+    {
+      "icon": "fa fa-bullhorn",
+      "title": "We broadcast",
+      "text": "We broadcast all of the available offers."
+    },
+    {
+      "icon": "fa fa-group",
+      "title": "We provide",
+      "text": "We provide a platform for all users."
+    },
+    {
+      "icon": "fa fa-magic",
+      "title": "We do our magic",
+      "text": "We do our magic by providing the ability to coordinate between different parties."
+    }
+  ]
+}

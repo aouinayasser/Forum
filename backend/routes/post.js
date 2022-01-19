@@ -17,44 +17,8 @@ const {
   updateCallCenterPost,
 } = require("../Controllers/CallCenterPosts");
 
-const {
-  getOneJobSeekerPost,
-  getAllJobSeekerPosts,
-  addJobSeekerPost,
-  deleteJobSeekerPost,
-  updateJobSeekerPost,
-} = require("../Controllers/JobSeekerPosts");
-
-const jobSeekerIsAuth = require('../middleware/jobSeekerIsAuth')
 const callCenterIsAuth = require('../middleware/callCenterIsAuth')
 const clientIsAuth = require('../middleware/clientIsAuth')
-
-//////////// JOB SEEKER //////////////
-
-//@ method get
-//@ url /:jobSeekerPostId
-// req.params
-router.get("/jobSeeker/:jobSeekerPostId",jobSeekerIsAuth, getOneJobSeekerPost);
-
-//@ method get
-//@ url /
-router.get("/jobSeeker",jobSeekerIsAuth, getAllJobSeekerPosts);
-
-//@ method post
-//@ url /addPost
-// req.body
-router.post("/addJobSeekerPost",jobSeekerIsAuth, addJobSeekerPost);
-
-//@ method delete
-//@ url /:jobSeekerPostId
-// req.params
-router.delete("/:jobSeekerPostId",jobSeekerIsAuth, deleteJobSeekerPost);
-
-//@ method put
-//@ url /:jobSeekerPostId
-// req.params
-// req.body
-router.put("/:jobSeekerPostId",jobSeekerIsAuth, updateJobSeekerPost);
 
 //////////// CALL CENTER //////////////
 
@@ -70,18 +34,18 @@ router.get("/callCenterPosts", getAllCallCenterPosts);
 //@ method post
 //@ url /addPost
 // req.body
-router.post("/addCallCenterPost",callCenterIsAuth, addCallCenterPost);
+router.post("/callcenter/addCallCenterPost",callCenterIsAuth, addCallCenterPost);
 
 //@ method delete
 //@ url /:callCenterPostId
 // req.params
-router.delete("/delete/callPost/:callCenterPostId",callCenterIsAuth, deleteCallCenterPost);
+router.delete("/delete/callPost/:callCenterPostId", deleteCallCenterPost);
 
 //@ method put
 //@ url /:callCenterPostId
 // req.params
 // req.body
-router.put("/update/callPost/:callCenterPostId",callCenterIsAuth, updateCallCenterPost);
+router.put("/update/callPost/:callCenterPostId", updateCallCenterPost);
 
 //////////// CLIENT //////////////
 
@@ -97,17 +61,17 @@ router.get("/clientPosts", getAllClientPosts);
 //@ method post
 //@ url /addPost
 // req.body
-router.post("/addClientPost",clientIsAuth, addClientPost);
+router.post("/client/addClientPost",clientIsAuth, addClientPost);
 
 //@ method delete
 //@ url /:clientPostId
 // req.params
-router.delete("/delete/clientPost/:clientPostId",clientIsAuth, deleteClientPost);
+router.delete("/delete/clientPost/:clientPostId", deleteClientPost);
 
 //@ method put
 //@ url /:clientPostId
 // req.params
 // req.body
-router.put("/update/clientPost/:clientPostId",clientIsAuth, updateClientPost);
+router.put("/update/clientPost/:clientPostId", updateClientPost);
 
 module.exports = router;

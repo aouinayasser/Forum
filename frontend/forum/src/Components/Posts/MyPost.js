@@ -110,11 +110,11 @@ export default function MyPost({ callPost, clientPost }) {
                       role="menu"
                     >
                       <a className="dropdown-item edit" data-abc="true">
-                        <EditPost />
+                        <EditPost callPost={callPost} clientPost={clientPost} />
                       </a>
                       <div className="dropdown-divider" />{" "}
                       <a className="dropdown-item trash" data-abc="true">
-                        <DeletePost />
+                        <DeletePost callPost={callPost} clientPost={clientPost} />
                       </a>
                     </div>
                   </div>

@@ -11,7 +11,7 @@ const callCenterIsAuth=(req,res,next)=>{
         req.callCenter=decoded
         next()
     } catch (error) {
-        res.status(401).send({errors:[{msg:"You are not authorized"}]})
+        console.log(error)
     }
 }
 module.exports=callCenterIsAuth

@@ -14,16 +14,19 @@ function jobSeekerAuthReducer(state=initState,{type,payload}){
     switch (type) {
         case JOBSEEKER_REGISTER:
             localStorage.setItem('token',payload.token)
+            localStorage.setItem('email',payload.jobSeeker.email)
             return{
                 ...state,jobSeeker:payload.jobSeeker,jobSeekerIsAuth:true,loading:false
             }
         case JOBSEEKER_LOGIN:
             localStorage.setItem('token',payload.token)
+            localStorage.setItem('email',payload.jobSeeker.email)
             return{
                 ...state,jobSeeker:payload.jobSeeker,jobSeekerIsAuth:true,loading:false
             }
         case JOBSEEKER_FAIL:
         case JOBSEEKER_LOGOUT:
+            localStorage.removeItem('email')
             localStorage.removeItem('token')
             return{
                 ...state,jobSeeker:null,jobSeekerIsAuth:false

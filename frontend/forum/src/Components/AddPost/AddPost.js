@@ -1,10 +1,15 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCallCenterPost, addClientPost } from "../../redux/actions/PostAction";
+import {
+  addCallCenterPost,
+  addClientPost,
+} from "../../redux/actions/PostAction";
 
 export default function AddPost() {
-  const callCenterIsAuth=useSelector(state=>state.callCenterAuthReducer.callCenterIsAuth)
+  const callCenterIsAuth = useSelector(
+    (state) => state.callCenterAuthReducer.callCenterIsAuth
+  );
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -14,7 +19,9 @@ export default function AddPost() {
     setAddPost({ ...addPost, [e.target.name]: e.target.value });
   };
   const handleSubmit = () => {
-    callCenterIsAuth ? dispatch(addCallCenterPost()) : dispatch(addClientPost())
+    callCenterIsAuth
+      ? dispatch(addCallCenterPost(addPost))
+      : dispatch(addClientPost(addPost));
   };
 
   return (
@@ -29,23 +36,28 @@ export default function AddPost() {
           <Modal.Title>Add a post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-              <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Title" />
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                type="text"
-                as="textarea"
-                placeholder="Description"
-                name="description"
-                onChange={handleChange}
-              />
-            
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" placeholder="Title" />
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            name="description"
+            type="text"
+            as="textarea"
+            placeholder="Description"
+            onChange={handleChange}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={()=>{handleSubmit();handleClose()}}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              handleSubmit();
+              handleClose();
+            }}
+          >
             Save Changes
           </Button>
         </Modal.Footer>

@@ -11,8 +11,7 @@ const clientIsAuth=(req,res,next)=>{
         req.client=decoded
         next()
     } catch (error) {
-        console.log(error.message)
-        res.status(401).send({errors:[{msg:"You are not authorized"}]})
+        console.log(error)
     }
 }
 module.exports=clientIsAuth
