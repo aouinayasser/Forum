@@ -47,7 +47,6 @@ export default function MyPost({ callPost, clientPost }) {
                       ? dispatch(getOneCallCenterPost(callPost._id))
                       : dispatch(getOneClientPost(clientPost._id));
                   }
-                  navigate("/viewpost");
                 }}
               >
                 {" "}
