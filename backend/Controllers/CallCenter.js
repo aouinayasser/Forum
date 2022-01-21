@@ -35,9 +35,8 @@ exports.signUpCallCenter = async (req, res) => {
       id: callCenter._id,
     };
     const token = jwt.sign(payload, process.env.secret1, { expiresIn: "30d" });
-    res.send({ callCenter, token });
+    res.send({ msg:"Account created",callCenter, token });
   } catch (error) {
-    console.log(error);
     res.status(500).send("server error");
   }
 };
@@ -61,7 +60,7 @@ exports.singInCallCenter = async (req, res) => {
       id: callCenter._id,
     };
     const token = jwt.sign(payload, process.env.secret1, { expiresIn: "30d" });
-    res.send({ callCenter, token });
+    res.send({ msg:"Login successful",callCenter, token });
   } catch (error) {
     console.log(error);
     res.status(500).send("server error");

@@ -24,6 +24,7 @@ export const jobSeekerRegister = (formData, navigate) => async (dispatch) => {
     navigate("/callposts");
   } catch (error) {
     dispatch({ type: JOBSEEKER_FAIL });
+    console.log(error.response.data)
   }
 };
 

@@ -25,16 +25,26 @@ export const getOneCallCenterPost = (id) => async (dispatch) => {
 };
 
 export const addCallCenterPost = (formData) => async () => {
+  const config={
+    headers:{
+      authorization:localStorage.getItem('token')
+    }
+  }
   try {
-    await axios.post("/api/posts/callcenter/addCallCenterPost", formData)
+    await axios.post("/api/posts/callcenter/addCallCenterPost", formData,config)
   } catch (error) {
     console.log(error.response.data);
   }
 };
 
 export const deleteCallCenterPost = (id) => async (dispatch) => {
+  const config={
+    headers:{
+      authorization:localStorage.getItem('token')
+    }
+  }
   try {
-    await axios.delete(`/api/posts/delete/callPost/${id}`);
+    await axios.delete(`/api/posts/delete/callPost/${id}`,config);
     dispatch(getCallCentersPosts());
   } catch (error) {
     console.log(error.response.data);
@@ -42,8 +52,13 @@ export const deleteCallCenterPost = (id) => async (dispatch) => {
 };
 
 export const editCallCenterPost = (id, formData) => async (dispatch) => {
+  const config={
+    headers:{
+      authorization:localStorage.getItem('token')
+    }
+  }
   try {
-    await axios.put(`/api/posts/update/callPost/${id}`, formData);
+    await axios.put(`/api/posts/update/callPost/${id}`, formData,config);
     dispatch(getCallCentersPosts());
   } catch (error) {
     console.log(error.response.data);
@@ -69,8 +84,13 @@ export const getOneClientPost = (id) => async (dispatch) => {
 };
 
 export const addClientPost = (formData) => async (dispatch) => {
+  const config={
+    headers:{
+      authorization:localStorage.getItem('token')
+    }
+  }
   try {
-    await axios.post("/api/posts/client/addClientPost", formData);
+    await axios.post("/api/posts/client/addClientPost", formData,config);
     dispatch(getClientsPosts());
   } catch (error) {
     console.log(error.response.data);
@@ -78,8 +98,13 @@ export const addClientPost = (formData) => async (dispatch) => {
 };
 
 export const deleteClientPost = (id) => async (dispatch) => {
+  const config={
+    headers:{
+      authorization:localStorage.getItem('token')
+    }
+  }
   try {
-    await axios.delete(`/api/posts/delete/clientPost/${id}`);
+    await axios.delete(`/api/posts/delete/clientPost/${id}`,config);
     dispatch(getClientsPosts());
   } catch (error) {
     console.log(error.response.data);
@@ -87,8 +112,13 @@ export const deleteClientPost = (id) => async (dispatch) => {
 };
 
 export const editClientPost = (id, formData) => async (dispatch) => {
+  const config={
+    headers:{
+      authorization:localStorage.getItem('token')
+    }
+  }
   try {
-    await axios.put(`/api/posts/update/clientPost/${id}`, formData);
+    await axios.put(`/api/posts/update/clientPost/${id}`, formData,config);
     dispatch(getClientsPosts());
   } catch (error) {
     console.log(error.response.data);

@@ -5,12 +5,13 @@ import clientAuthReducer from "./clientAuthReducer";
 import clientPostReducer from "./clientPostReducer";
 import callCenterPostReducer from "./callCenterPostReducer";
 
+
 const rootReducer = combineReducers({
   jobSeekerAuthReducer,
   callCenterAuthReducer,
   clientAuthReducer,
   callCenterPostReducer,
-  clientPostReducer,
+  clientPostReducer
 });
 
 export default rootReducer;

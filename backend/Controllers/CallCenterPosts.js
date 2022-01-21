@@ -3,13 +3,11 @@ const CallCenterPost = require("../Models/CallCenterPost");
 // Add post
 exports.addCallCenterPost = async (req, res) => {
   const { description } = req.body;
-
   try {
     const post = new CallCenterPost({
       description,
       CallCenter: req.callCenter.id,
     });
-
     await post.save();
     res.send({ msg: "Post added", post });
   } catch (error) {

@@ -19,6 +19,7 @@ export default function AddPost() {
     setAddPost({ ...addPost, [e.target.name]: e.target.value });
   };
   const handleSubmit = () => {
+    console.log(callCenterIsAuth)
     callCenterIsAuth
       ? dispatch(addCallCenterPost(addPost))
       : dispatch(addClientPost(addPost));
@@ -58,7 +59,7 @@ export default function AddPost() {
               handleClose();
             }}
           >
-            Save Changes
+            Add post
           </Button>
         </Modal.Footer>
       </Modal>

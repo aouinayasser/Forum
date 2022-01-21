@@ -48,27 +48,27 @@ export default function ViewPost() {
                     <div className="blog-card__info">
                       {jobSeeker || clientIsAuth ? (
                         <h5>
-                          {callCenterPost &&
+                          {callCenterPost &&callCenterPost.CallCenter&&
                             callCenterPost.CallCenter.companyName}
                         </h5>
                       ) : (
-                        <h5>{clientPost && clientPost.Client.companyName}</h5>
+                        <h5>{clientPost &&clientPost.Client&& clientPost.Client.companyName}</h5>
                       )}
                       <p>
                         <a className="icon-link mr-3">
                           <i className="fa fa-pencil-square-o" />
                           {jobSeeker || clientIsAuth ? (
                             <p>
-                              {callCenterPost &&
+                              {callCenterPost &&callCenterPost.CallCenter&&
                                 callCenterPost.CallCenter.firstname}{" "}
-                              {callCenterPost &&
+                              {callCenterPost &&callCenterPost.CallCenter&&
                                 callCenterPost.CallCenter.lastname}{" "}
                               posted this
                             </p>
                           ) : (
                             <p>
-                              {clientPost && clientPost.Client.firstname}{" "}
-                              {clientPost && clientPost.Client.lastname} posted
+                              {clientPost &&clientPost.Client&& clientPost.Client.firstname}{" "}
+                              {clientPost &&clientPost.Client&& clientPost.Client.lastname} posted
                               this
                             </p>
                           )}
@@ -91,10 +91,10 @@ export default function ViewPost() {
                         {jobSeeker || clientIsAuth ? (
                           <p>
                             Email :{" "}
-                            {callCenterPost && callCenterPost.CallCenter.email}
+                            {callCenterPost &&callCenterPost.CallCenter&& callCenterPost.CallCenter.email}
                           </p>
                         ) : (
-                          <p>Email : {clientPost && clientPost.Client.email}</p>
+                          <p>Email : {clientPost &&clientPost.Client&& clientPost.Client.email}</p>
                         )}
                       </ul>
                     </div>

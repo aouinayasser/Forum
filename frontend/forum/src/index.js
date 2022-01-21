@@ -7,6 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import store from './redux/store'
 import {Provider} from 'react-redux'
+import 'react-notifications/lib/notifications.css';
 
 ReactDOM.render(
 <Provider store={store} >

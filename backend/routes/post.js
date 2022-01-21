@@ -39,13 +39,13 @@ router.post("/callcenter/addCallCenterPost",callCenterIsAuth, addCallCenterPost)
 //@ method delete
 //@ url /:callCenterPostId
 // req.params
-router.delete("/delete/callPost/:callCenterPostId", deleteCallCenterPost);
+router.delete("/delete/callPost/:callCenterPostId",callCenterIsAuth, deleteCallCenterPost);
 
 //@ method put
 //@ url /:callCenterPostId
 // req.params
 // req.body
-router.put("/update/callPost/:callCenterPostId", updateCallCenterPost);
+router.put("/update/callPost/:callCenterPostId",callCenterIsAuth, updateCallCenterPost);
 
 //////////// CLIENT //////////////
 
@@ -66,12 +66,12 @@ router.post("/client/addClientPost",clientIsAuth, addClientPost);
 //@ method delete
 //@ url /:clientPostId
 // req.params
-router.delete("/delete/clientPost/:clientPostId", deleteClientPost);
+router.delete("/delete/clientPost/:clientPostId",clientIsAuth, deleteClientPost);
 
 //@ method put
 //@ url /:clientPostId
 // req.params
 // req.body
-router.put("/update/clientPost/:clientPostId", updateClientPost);
+router.put("/update/clientPost/:clientPostId",clientIsAuth, updateClientPost);
 
 module.exports = router;
