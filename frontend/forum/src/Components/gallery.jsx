@@ -3,7 +3,7 @@ import { Image } from "./image";
 export const Gallery = (props) => {
   return (
     <div id='portfolio' className='text-center'>
-      <div className='container'>
+      <div className='home-container'>
         <div className='section-title'>
           <h2>Gallery</h2>
         </div>

@@ -238,7 +238,7 @@ th {
   h3 {
     page-break-after: avoid;
   }
-  .navbar {
+  .navbar-home {
     display: none;
   }
   .btn > .caret,
@@ -1581,34 +1581,34 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-.container {
+.home-container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
 @media (min-width: 768px) {
-  .container {
+  .home-container {
     width: 750px;
   }
 }
 @media (min-width: 992px) {
-  .container {
+  .home-container {
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
-  .container {
+  .home-container {
     width: 1170px;
   }
 }
-.container-fluid {
+.home-container-fluid {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
-.row {
+.home-row {
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -3020,6 +3020,7 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  color:white;
 }
 .btn:focus,
 .btn:active:focus,
@@ -3027,13 +3028,14 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  color: white;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: #333;
+  color: rgb(211, 211, 211);
   text-decoration: none;
 }
 .btn:active,
@@ -3057,25 +3059,25 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #333;
+  color: white;
   background-color: #fff;
   border-color: #ccc;
 }
 .btn-default:focus,
 .btn-default.focus {
-  color: #333;
+  color: white;
   background-color: #e6e6e6;
   border-color: #8c8c8c;
 }
 .btn-default:hover {
-  color: #333;
+  color: white;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #333;
+  color: white;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
@@ -3088,7 +3090,7 @@ fieldset[disabled] a.btn {
 .btn-default:active.focus,
 .btn-default.active.focus,
 .open > .dropdown-toggle.btn-default.focus {
-  color: #333;
+  color: white;
   background-color: #d4d4d4;
   border-color: #8c8c8c;
 }
@@ -3433,6 +3435,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg,
 .btn-group-lg > .btn {
+  color: white;
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
@@ -4163,14 +4166,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.navbar {
+.navbar-home {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
-  .navbar {
+  .navbar-home {
     border-radius: 4px;
   }
 }
@@ -4224,18 +4227,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     max-height: 200px;
   }
 }
-.container > .navbar-header,
-.container-fluid > .navbar-header,
-.container > .navbar-collapse,
-.container-fluid > .navbar-collapse {
+.home-container > .navbar-header,
+.home-container-fluid > .navbar-header,
+.home-container > .navbar-collapse,
+.home-container-fluid > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px;
 }
 @media (min-width: 768px) {
-  .container > .navbar-header,
-  .container-fluid > .navbar-header,
-  .container > .navbar-collapse,
-  .container-fluid > .navbar-collapse {
+  .home-container > .navbar-header,
+  .home-container-fluid > .navbar-header,
+  .home-container > .navbar-collapse,
+  .home-container-fluid > .navbar-collapse {
     margin-right: 0;
     margin-left: 0;
   }
@@ -4286,8 +4289,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
 }
 @media (min-width: 768px) {
-  .navbar > .container .navbar-brand,
-  .navbar > .container-fluid .navbar-brand {
+  .navbar-home > .home-container .navbar-brand,
+  .navbar-home > .home-container-fluid .navbar-brand {
     margin-left: -15px;
   }
 }
@@ -4974,13 +4977,13 @@ a.badge:focus {
 .jumbotron > hr {
   border-top-color: #d5d5d5;
 }
-.container .jumbotron,
-.container-fluid .jumbotron {
+.home-container .jumbotron,
+.home-container-fluid .jumbotron {
   padding-right: 15px;
   padding-left: 15px;
   border-radius: 6px;
 }
-.jumbotron .container {
+.jumbotron .home-container {
   max-width: 100%;
 }
 @media screen and (min-width: 768px) {
@@ -4988,8 +4991,8 @@ a.badge:focus {
     padding-top: 48px;
     padding-bottom: 48px;
   }
-  .container .jumbotron,
-  .container-fluid .jumbotron {
+  .home-container .jumbotron,
+  .home-container-fluid .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
   }
@@ -6462,12 +6465,12 @@ button.close {
 .clearfix:after,
 .dl-horizontal dd:before,
 .dl-horizontal dd:after,
-.container:before,
-.container:after,
-.container-fluid:before,
-.container-fluid:after,
-.row:before,
-.row:after,
+.home-container:before,
+.home-container:after,
+.home-container-fluid:before,
+.home-container-fluid:after,
+.home-row:before,
+.home-row:after,
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after,
 .btn-toolbar:before,
@@ -6495,14 +6498,14 @@ button.close {
 }
 .clearfix:after,
 .dl-horizontal dd:after,
-.container:after,
-.container-fluid:after,
-.row:after,
+.home-container:after,
+.home-container-fluid:after,
+.home-row:after,
 .form-horizontal .form-group:after,
 .btn-toolbar:after,
 .btn-group-vertical > .btn-group:after,
 .nav:after,
-.navbar:after,
+.navbar-home:after,
 .navbar-header:after,
 .navbar-collapse:after,
 .pager:after,

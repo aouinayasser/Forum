@@ -3,7 +3,7 @@ export const Header = (props) => {
     <header id='header'>
       <div className='intro'>
         <div className='overlay'>
-          <div className='container'>
+          <div className='home-container'>
             <div className='row'>
               <div className='col-md-8 col-md-offset-2 intro-text'>
                 <h1>
@@ -12,7 +12,7 @@ export const Header = (props) => {
                 </h1>
                 <a  style={{ marginTop: 30 }}
                   href='#features'
-                  className='btn btn-custom btn-lg page-scroll'
+                  className='btn-custom btn-lg page-scroll'
                 >
                   Learn More
                 </a>{' '}

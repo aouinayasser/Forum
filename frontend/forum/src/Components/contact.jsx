@@ -33,7 +33,7 @@ export const Contact = (props) => {
   return (
     <div>
       <div id="contact">
-        <div className="container">
+        <div className="home-container">
           <div className="col-md-8">
             <div className="row">
               <div className="section-title">
@@ -123,7 +123,7 @@ export const Contact = (props) => {
           <div className="col-md-12">
             <div className="row">
               <div id="footer">
-                <div className="container text-center">
+                <div className="home-container text-center">
                   <p>
                     &copy; 2022 iCall Made by Yasser Aouina
                   </p>
