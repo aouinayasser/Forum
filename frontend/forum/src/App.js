@@ -18,6 +18,7 @@ import ViewPost from "./Components/Views/ViewPost";
 import CallPostList from "./Components/Views/CallPostList";
 import MyPosts from "./Components/Views/MyPosts";
 import ClientCallPostList from "./Components/Views/ClientCallPostList";
+import Alert from "./Components/Alerts/Alert";
 
 function App() {
   const callCenterPosts = useSelector(
@@ -49,6 +50,7 @@ function App() {
             element={
               <PrivateRoute>
                 <NavBar />
+                <Alert />
                 <PostList clientPosts={clientPosts} />
                 <Footer />
               </PrivateRoute>
@@ -59,6 +61,7 @@ function App() {
             element={
               <PrivateRoute>
                 <NavBar />
+                <Alert />
                 <CallPostList callCenterPosts={callCenterPosts} />
                 <Footer />
               </PrivateRoute>
@@ -69,6 +72,7 @@ function App() {
             element={
               <PrivateRoute>
                 <NavBar />
+                <Alert />
                 <ClientCallPostList callCenterPosts={callCenterPosts} />
                 <Footer />
               </PrivateRoute>

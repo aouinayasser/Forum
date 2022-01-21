@@ -28,7 +28,7 @@ exports.signUpJobSeeker=async(req,res)=>{
             id:jobSeeker._id
         }
         const token=jwt.sign(payload,process.env.secret3,{ expiresIn: '30d' })
-        res.status(200).send({jobSeeker,token})
+        res.status(200).send({msg:"Successfully registered",jobSeeker,token})
     } catch (error) {
         res.status(500).send('server error')
     }
@@ -53,7 +53,7 @@ exports.singInJobseeker=async(req,res)=>{
             id:jobSeeker._id
         }
         const token=jwt.sign(payload,process.env.secret3,{ expiresIn: '30d' })
-        res.send({jobSeeker,token})
+        res.send({msg:"Logged in successfully",jobSeeker,token})
     } catch (error) {
         console.log(error)
         res.status(500).send('server error')

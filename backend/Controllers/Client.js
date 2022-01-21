@@ -28,7 +28,7 @@ exports.signUpClient=async(req,res)=>{
             id:client._id
         }
         const token=jwt.sign(payload,process.env.secret2,{ expiresIn: '30d' })
-        res.send({client,token})
+        res.send({msg:"Successfully registered",client,token})
     } catch (error) {
         console.log(error)
         res.status(500).send('server error')
@@ -54,7 +54,7 @@ exports.singInClient=async(req,res)=>{
             id:client._id
         }
         const token=jwt.sign(payload,process.env.secret2,{ expiresIn: '30d' })
-        res.send({client,token})
+        res.send({msg:"Logged in successfully",client,token})
     } catch (error) {
         console.log(error)
         res.status(500).send('server error')

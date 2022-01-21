@@ -16,15 +16,17 @@ import {
   CALLCENTER_LOGOUT,
   CLIENT_LOGOUT,
 } from "../types";
+import { setAlert } from "./alertAction";
 
 export const jobSeekerRegister = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/jobseeker/signup", formData);
     dispatch({ type: JOBSEEKER_REGISTER, payload: res.data });
+    dispatch(setAlert(res.data.msg,"success"))
     navigate("/callposts");
   } catch (error) {
     dispatch({ type: JOBSEEKER_FAIL });
-    console.log(error.response.data)
+    error.response.data.errors.forEach(error=>dispatch(setAlert(error.msg,"error")))
   }
 };
 
@@ -32,9 +34,11 @@ export const jobSeekerLogin = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/jobseeker/signin", formData);
     dispatch({ type: JOBSEEKER_LOGIN, payload: res.data });
+    dispatch(setAlert(res.data.msg,"success"))
     navigate("/callposts");
   } catch (error) {
     dispatch({ type: JOBSEEKER_FAIL });
+    error.response.data.errors.forEach(error=>dispatch(setAlert(error.msg,"error")))
   }
 };
 
@@ -42,9 +46,11 @@ export const callCenterRegister = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/callcenter/signup", formData);
     dispatch({ type: CALLCENTER_REGISTER, payload: res.data });
+    dispatch(setAlert(res.data.msg,"success"))
     navigate("/posts");
   } catch (error) {
-    dispatch({ type: CALLCENTER_FAIL });
+    dispatch({ type: CALLCENTER_FAIL })
+    error.response.data.errors.forEach(error=>dispatch(setAlert(error.msg,"error")))
   }
 };
 
@@ -52,9 +58,11 @@ export const callCenterLogin = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/callcenter/signin", formData);
     dispatch({ type: CALLCENTER_LOGIN, payload: res.data });
+    dispatch(setAlert(res.data.msg,"success"))
     navigate("/posts");
   } catch (error) {
-    dispatch({ type: CALLCENTER_FAIL });
+    dispatch({ type: CALLCENTER_FAIL })
+    error.response.data.errors.forEach(error=>dispatch(setAlert(error.msg,"error")))
   }
 };
 
@@ -62,9 +70,11 @@ export const clientRegister = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/client/signup", formData);
     dispatch({ type: CLIENT_REGISTER, payload: res.data });
+    dispatch(setAlert(res.data.msg,"success"))
     navigate("/ClientCallPostList");
   } catch (error) {
-    dispatch({ type: CLIENT_FAIL });
+    dispatch({ type: CLIENT_FAIL })
+    error.response.data.errors.forEach(error=>dispatch(setAlert(error.msg,"error")))
   }
 };
 
@@ -72,9 +82,11 @@ export const clientLogin = (formData, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/api/auth/client/signin", formData);
     dispatch({ type: CLIENT_LOGIN, payload: res.data });
+    dispatch(setAlert(res.data.msg,"success"))
     navigate("/ClientCallPostList");
   } catch (error) {
     dispatch({ type: CLIENT_FAIL });
+    error.response.data.errors.forEach(error=>dispatch(setAlert(error.msg,"error")))
   }
 };
 

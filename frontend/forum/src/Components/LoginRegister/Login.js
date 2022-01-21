@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { callCenterLogin, clientLogin, jobSeekerLogin } from '../../redux/actions/AuthAction'
 import { DropdownButton,Dropdown} from 'react-bootstrap'
+import Alert from '../Alerts/Alert'
+
 
 export default function Login() {
   const [role,setRole]=useState('')
@@ -22,6 +24,7 @@ export default function Login() {
   }
     return(
         <div>
+          <Alert />
         <title>Se connecter</title>
         <div className="limiter">
           <div className="container-login100">

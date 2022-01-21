@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { jobSeekerRegister,callCenterRegister,clientRegister } from '../../redux/actions/AuthAction'
 import { useNavigate } from 'react-router-dom'
-
+import Alert from '../Alerts/Alert'
 
 export default function Register() {
   const navigate=useNavigate()
@@ -25,6 +25,7 @@ export default function Register() {
   }
     return(
         <div>
+          <Alert />
         <title>Register</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

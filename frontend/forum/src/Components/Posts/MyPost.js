@@ -10,7 +10,6 @@ import {
 
 export default function MyPost({ callPost, clientPost }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const callcenter = useSelector(
     (state) => state.callCenterAuthReducer.callCenterIsAuth
   );
