@@ -17,7 +17,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const jobSeeker = useSelector(
     (state) => state.jobSeekerAuthReducer.jobSeekerIsAuth
@@ -29,7 +29,7 @@ export default function NavBar() {
   const handleLogout = () => {
     jobSeeker === true
       ? dispatch(jobSeekerLogout())
-    : callCenter === true
+      : callCenter === true
       ? dispatch(callCenterLogout())
       : dispatch(clientLogout());
   };
@@ -62,27 +62,15 @@ export default function NavBar() {
               </Nav.Link>
             </Nav>
           )}
-          <Form
-            className="d-flex col-4"
-            style={{ position: "absolute", marginLeft: "400px" }}
-          >
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-light">Search</Button>
-          </Form>
         </Container>
-        <Button variant="outline-light">
+        <Button variant="danger" style={{ marginRight: "30px", width: "70px" }}>
           <span
-            style={{ marginRight: "15px" }}
-            className="bi bi-box-arrow-right text-danger"
+            style={{ marginRight: "30px" }}
+            className="bi bi-box-arrow-right text-light"
             aria-hidden="true"
             onClick={() => {
               handleLogout();
-              navigate('/')
+              navigate("/");
             }}
           >
             &nbsp;&nbsp;Logout

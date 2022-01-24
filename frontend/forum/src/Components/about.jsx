@@ -1,4 +1,4 @@
-export const About = (props) => {
+const About = (props) => {
   return (
     <div id="about">
       <div className="home-container">
@@ -39,3 +39,5 @@ export const About = (props) => {
     </div>
   );
 };
+
+export default About

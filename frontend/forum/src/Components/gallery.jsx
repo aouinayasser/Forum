@@ -1,6 +1,6 @@
-import { Image } from "./image";
+import  Image  from "./image";
 
-export const Gallery = (props) => {
+const Gallery = (props) => {
   return (
     <div id='portfolio' className='text-center'>
       <div className='home-container'>
@@ -22,3 +22,5 @@ export const Gallery = (props) => {
     </div>
   )
 }
+
+export default Gallery

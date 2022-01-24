@@ -26,9 +26,6 @@ export default function Post({ callPost, clientPost }) {
           >
             <div
               className="list-item"
-              data-id={13}
-              data-item-sortable-id={0}
-              draggable="true"
               role="option"
               aria-grabbed="false"
               style={{}}

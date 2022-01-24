@@ -37,8 +37,6 @@ export default function AddPost() {
           <Modal.Title>Add a post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Label>Title</Form.Label>
-          <Form.Control type="text" placeholder="Title" />
           <Form.Label>Description</Form.Label>
           <Form.Control
             name="description"

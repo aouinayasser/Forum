@@ -105,9 +105,9 @@ export default function MyPost({ callPost, clientPost }) {
                     </a>
                     <div
                       className="dropdown-menu dropdown-menu-right bg-white"
-                      role="menu"
+                      role="menu" style={{width:"130px"}}
                     >
-                      <a className="dropdown-item edit" data-abc="true">
+                      <a className="dropdown-item edit" data-abc="true" >
                         <EditPost callPost={callPost} clientPost={clientPost} />
                       </a>
                       <div className="dropdown-divider" />{" "}

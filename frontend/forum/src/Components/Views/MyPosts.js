@@ -5,7 +5,7 @@ import {
   getClientsPosts,
 } from "../../redux/actions/PostAction";
 import AddPost from "../AddPost/AddPost";
-import Footer from "../Footer/Footer";
+import Contact from "../contact";
 import NavBar from "../Navbar/NavBar";
 import MyPost from "../Posts/MyPost";
 import "./PostList.css";
@@ -33,6 +33,7 @@ export default function MyPosts({ clientPosts, callCenterPosts }) {
                 <div id="addPost" className="row col-sm-2">
                   <AddPost />
                 </div>
+                <br /><br /><br /><br />
 
                 {callCenterPosts.map((callPost) => {
                   if (
@@ -46,6 +47,7 @@ export default function MyPosts({ clientPosts, callCenterPosts }) {
                 <div id="addPost" className="row col-sm-2">
                   <AddPost />
                 </div>
+                <br /><br /><br /><br />
                 {clientPosts.map((clientPost) => {
                   if (localStorage.getItem("email") === clientPost.Client.email)
                     return <MyPost clientPost={clientPost} key={clientPost._id} />
@@ -53,31 +55,8 @@ export default function MyPosts({ clientPosts, callCenterPosts }) {
               </div>
             )}
 
-            <nav>
-              <ul className="pagination">
-                <li className="page-item">
-                  <a className="page-link" aria-label="Previous">
-                    <span aria-hidden="true">«</span>
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link">1</a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link">2</a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link">3</a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" aria-label="Next">
-                    <span aria-hidden="true">»</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
           </div>
-          <Footer />
+          <Contact />
         </>
       )}
     </>

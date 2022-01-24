@@ -1,4 +1,28 @@
-export const Navigation = (props) => {
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  callCenterLogout,
+  clientLogout,
+  jobSeekerLogout,
+} from "../redux/actions/AuthAction";
+
+const Navigation = () => {
+  const dispatch = useDispatch();
+  const { jobSeekerIsAuth } = useSelector(
+    (state) => state.jobSeekerAuthReducer
+  );
+  const { callCenterIsAuth } = useSelector(
+    (state) => state.callCenterAuthReducer
+  );
+  const { clientIsAuth } = useSelector((state) => state.clientAuthReducer);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    jobSeekerIsAuth === true
+      ? dispatch(jobSeekerLogout())
+      : callCenterIsAuth === true
+      ? dispatch(callCenterLogout())
+      : dispatch(clientLogout());
+  };
   return (
     <nav id="menu" className="navbar-home navbar-default navbar-fixed-top">
       <div className="home-container">
@@ -24,7 +48,10 @@ export const Navigation = (props) => {
           className="collapse navbar-collapse"
           id="bs-example-navbar-collapse-1"
         >
-          <ul className="nav navbar-nav navbar-right" style={{display:"inline-block"}}>
+          <ul
+            className="nav navbar-nav navbar-right"
+            style={{ display: "inline-block" }}
+          >
             <li>
               <a href="#features" className="page-scroll">
                 Features
@@ -60,17 +87,39 @@ export const Navigation = (props) => {
                 Contact
               </a>
             </li>
-            <div className="nav-buttons">
-            <a href="#features" className="btn-custom btn-lg">
-                Sign Up
-              </a>
-              <a href="#features" className="btn-custom btn-lg">
-                Sign In
-              </a>
-            </div>
+            {jobSeekerIsAuth || callCenterIsAuth || clientIsAuth ? (
+              <div className="nav-buttons">
+                <a
+                  onClick={() => {
+                    handleLogout();
+                    navigate("/login");
+                  }}
+                  className="btn-custom btn-lg"
+                >
+                  Logout
+                </a>
+              </div>
+            ) : (
+              <div className="nav-buttons">
+                <a
+                  onClick={() => navigate("/register")}
+                  className="btn-custom btn-lg"
+                >
+                  Sign Up
+                </a>
+                <a
+                  onClick={() => navigate("/login")}
+                  className="btn-custom btn-lg"
+                >
+                  Sign In
+                </a>
+              </div>
+            )}
           </ul>
         </div>
       </div>
     </nav>
   );
 };
+
+export default Navigation;

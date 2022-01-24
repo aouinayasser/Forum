@@ -1,4 +1,4 @@
-export const Header = (props) => {
+const Header = (props) => {
   return (
     <header id='header'>
       <div className='intro'>
@@ -24,3 +24,5 @@ export const Header = (props) => {
     </header>
   )
 }
+
+export default Header

@@ -1,4 +1,4 @@
-export const Team = (props) => {
+const Team = (props) => {
   return (
     <div id='team' className='text-center'>
       <div className='home-container'>
@@ -28,3 +28,6 @@ export const Team = (props) => {
     </div>
   )
 }
+
+
+export default Team

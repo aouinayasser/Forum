@@ -1,4 +1,4 @@
-export const Testimonials = (props) => {
+const Testimonials = (props) => {
   return (
     <div id='testimonials'>
       <div className='home-container'>
@@ -27,3 +27,5 @@ export const Testimonials = (props) => {
     </div>
   )
 }
+
+export default Testimonials

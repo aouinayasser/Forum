@@ -1,48 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Pagination from "../Pagination/Pagination";
 import { useDispatch } from "react-redux";
 import { getClientsPosts } from "../../redux/actions/PostAction";
-import AddPost from "../AddPost/AddPost";
 import Post from "../Posts/Post";
 import "./PostList.css";
 
 export default function PostList({ clientPosts }) {
-  const dispatch=useDispatch()
-  useEffect(()=>{
-    dispatch(getClientsPosts())
-  },[])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getClientsPosts());
+  }, []);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(4);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = clientPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className="container">
       <div className="forumContainer">
-        <div id="addPost" className="row col-sm-2">
-          <AddPost />
-        </div>
-        {clientPosts.map((clientPost) => (
+        {currentPosts.map((clientPost) => (
           <Post clientPost={clientPost} key={clientPost._id} />
         ))}
+        
       </div>
-      <nav>
-        <ul className="pagination">
-          <li className="page-item">
-            <a className="page-link" aria-label="Previous">
-              <span aria-hidden="true">«</span>
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link">1</a>
-          </li>
-          <li className="page-item">
-            <a className="page-link">2</a>
-          </li>
-          <li className="page-item">
-            <a className="page-link">3</a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" aria-label="Next">
-              <span aria-hidden="true">»</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={clientPosts.length}
+        paginate={paginate}
+      />
     </div>
   );
 }

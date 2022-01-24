@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Footer from "../Footer/Footer";
+import Contact from "../contact";
 import "./ViewPost.css";
 import "./ViewPost.scss";
 
@@ -106,7 +106,7 @@ export default function ViewPost() {
               <div className="container mt-5"></div>
             </section>
           </div>
-          <Footer />
+          <Contact />
         </>
       )}
     </>

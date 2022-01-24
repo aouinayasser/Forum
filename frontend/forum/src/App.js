@@ -1,5 +1,4 @@
 import "./App.css";
-import Footer from "./Components/Footer/Footer";
 import Login from "./Components/LoginRegister/Login";
 import Register from "./Components/LoginRegister/Register";
 import NavBar from "./Components/Navbar/NavBar";
@@ -19,6 +18,7 @@ import CallPostList from "./Components/Views/CallPostList";
 import MyPosts from "./Components/Views/MyPosts";
 import ClientCallPostList from "./Components/Views/ClientCallPostList";
 import Alert from "./Components/Alerts/Alert";
+import Contact from "./Components/contact";
 
 function App() {
   const callCenterPosts = useSelector(
@@ -52,7 +52,7 @@ function App() {
                 <NavBar />
                 <Alert />
                 <PostList clientPosts={clientPosts} />
-                <Footer />
+                <Contact />
               </PrivateRoute>
             }
           />
@@ -63,7 +63,7 @@ function App() {
                 <NavBar />
                 <Alert />
                 <CallPostList callCenterPosts={callCenterPosts} />
-                <Footer />
+                <Contact />
               </PrivateRoute>
             }
           />
@@ -74,7 +74,7 @@ function App() {
                 <NavBar />
                 <Alert />
                 <ClientCallPostList callCenterPosts={callCenterPosts} />
-                <Footer />
+                <Contact />
               </PrivateRoute>
             }
           />

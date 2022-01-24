@@ -62,10 +62,6 @@ export default function EditPost({ callPost, clientPost }) {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Title" />
-            </Form.Group>
-            <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
               <Form.Control
                 name="description"
